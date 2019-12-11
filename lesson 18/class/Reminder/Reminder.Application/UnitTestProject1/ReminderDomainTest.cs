@@ -2,6 +2,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Reminder.Storage.Core;
 using Reminder.Storage.InMemory;
 using System;
+using Moq;
+using Reminder.Receiever.Core;
+using System.Collections.Generic;
 
 namespace Reminder.Domain.Tests
 {
@@ -12,10 +15,18 @@ namespace Reminder.Domain.Tests
         public void Method_Run_Should_Update_Ready_To_Send_Reminders_To_Status_Ready()
         {
             var storage = new InMemoryReminderStorage();
-            storage.Add(new ReminderItem(DateTimeOffset.Now, null, null));
+			storage.Add(
+				DateTimeOffset.Now, 
+				null, 
+				null, 
+				ReminderItemStatus.Awaiting);
+
+			var mockReceiver = new Mock<IReminderReceiever>();
+			var fakeReceiver = mockReceiver.Object;
 
             using (var domain = new ReminderDomain(
                 storage,
+				fakeReceiver,
                 TimeSpan.FromMilliseconds(50),
                 TimeSpan.FromMilliseconds(1)))
             {
@@ -32,12 +43,20 @@ namespace Reminder.Domain.Tests
         public void Method_Run_Should_Call_Failed_Event_When_Sending_Throw_Exception()
         {
             var storage = new InMemoryReminderStorage();
-            storage.Add(new ReminderItem(DateTimeOffset.Now, null, null));
+            storage.Add(
+				DateTimeOffset.Now,
+				null, 
+				null,
+				ReminderItemStatus.Awaiting);
 
             bool failedEventCalled = false;
 
-            using (var domain = new ReminderDomain(
+			var mockReceiver = new Mock<IReminderReceiever>();
+			var fakeReceiver = mockReceiver.Object;
+
+			using (var domain = new ReminderDomain(
                 storage,
+				fakeReceiver,
                 TimeSpan.FromMilliseconds(50),
                 TimeSpan.FromMilliseconds(60)))
             {
@@ -68,14 +87,20 @@ namespace Reminder.Domain.Tests
 
             var storage = new InMemoryReminderStorage();
 
-            storage.Add(new ReminderItem(
+            storage.Add(
                 dateTime,
                 readyMessage,
-                contactId));
+                contactId,
+				ReminderItemStatus.Awaiting);
 
-            bool failedEventNotCalled = false;
-            using (var domain = new ReminderDomain(
+            bool secceddedEventCalled = false;
+
+			var mockReceiver = new Mock<IReminderReceiever>();
+			var fakeReceiver = mockReceiver.Object;
+
+			using (var domain = new ReminderDomain(
                 storage,
+				fakeReceiver,
                 TimeSpan.FromMilliseconds(50),
                 TimeSpan.FromMilliseconds(60)))
             {
@@ -83,32 +108,62 @@ namespace Reminder.Domain.Tests
 
                 domain.SendingSucceeded += (s, e) =>
                 {
-                    failedEventNotCalled = true;
+                    secceddedEventCalled = true;
                 };
                 domain.Run();
                 System.Threading.Thread.Sleep(1200);
             }
 
-            Assert.IsTrue(failedEventNotCalled); 
+            Assert.IsTrue(secceddedEventCalled); 
         }
 
         [TestMethod]
         public void Method_Run_Should_Call_SendReminder_Method_When_Sending_Is_Completed()
         {
-            DateTimeOffset dateTime = DateTimeOffset.Now;
-            const string readyMessage = "ready message",
-                contactId = "ABCD123";
+			//var storage = new InMemoryReminderStorage();
 
-            var storage = new InMemoryReminderStorage();
+			//storage.Add(
+			//	dateTime,
+			//	readyMessage,
+			//	contactId,
+			//	ReminderItemStatus.Awaiting);
 
-            storage.Add(new ReminderItem(
-                dateTime,
-                readyMessage,
-                contactId));
+			var dictionaryForMock = new Dictionary<Guid, ReminderItem>();
 
-            bool SendReminderMethodCalled = false;
-            using (var domain = new ReminderDomain(
-                storage,
+			var mockStorage = new Mock<IReminderStorage>();
+			mockStorage.Setup(
+				x => x.Add(
+					It.IsAny<DateTimeOffset>(),
+					It.IsAny<string>(),
+					It.IsAny<string>(),
+					It.IsAny<ReminderItemStatus>()))
+				.Returns<DateTimeOffset, string, string, ReminderItemStatus>((date, message, contactId, status) =>
+				{
+					var newGuid = Guid.NewGuid();
+					dictionaryForMock.Add(newGuid, new ReminderItem(newGuid, date, message, contactId, status));
+					return newGuid;
+				});
+
+			mockStorage.Setup(x => x.Get(
+				It.IsAny<Guid>()))
+				.Returns<Guid>(id =>
+				{
+					if (dictionaryForMock.ContainsKey(id))
+						return dictionaryForMock[id];
+
+					return null;
+				});
+
+			var fakeStorage = mockStorage.Object;
+
+			bool SendReminderMethodCalled = false;
+
+			var mockReceiver = new Mock<IReminderReceiever>();
+			var fakeReceiver = mockReceiver.Object;
+
+			using (var domain = new ReminderDomain(
+                fakeStorage,
+				fakeReceiver,
                 TimeSpan.FromMilliseconds(50),
                 TimeSpan.FromMilliseconds(60)))
             {
@@ -126,5 +181,5 @@ namespace Reminder.Domain.Tests
 
             Assert.IsTrue(SendReminderMethodCalled);
         }
-    }
+	}
 }

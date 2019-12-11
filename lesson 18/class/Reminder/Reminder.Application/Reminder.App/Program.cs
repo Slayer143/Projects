@@ -25,7 +25,7 @@ namespace Reminder.App
             string token = "979765455:AAE5XgfCXVA3C7LfRWF_VWy1NcCp28Z9R4I";
 
             IWebProxy proxy = new HttpToSocks5Proxy(
-                "orbtl.s5.opennetwork.cc",
+                "grsst.s5.opennetwork.cc",
                 999,
                 "835403233",
                 "mhq3OugD");

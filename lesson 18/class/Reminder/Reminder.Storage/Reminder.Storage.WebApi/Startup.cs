@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Reminder.Storage.Core;
 using Reminder.Storage.InMemory;
+using Reminder.Storage.SqlServer.ADO;
 
 namespace Reminder.Storage.WebApi
 {
@@ -14,7 +15,7 @@ namespace Reminder.Storage.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSingleton<IReminderStorage>(new InMemoryReminderStorage());
+            services.AddSingleton<IReminderStorage>(new SqlReminderStorage(@"Data Source=localhost\SQLEXPRESS;Initial Catalog=Reminder;Integrated Security=true;"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
