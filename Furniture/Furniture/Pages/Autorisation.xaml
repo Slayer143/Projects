@@ -1,0 +1,26 @@
+﻿<Page x:Class="Furniture.Pages.Autorisation"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Furniture.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="699" d:DesignWidth="1400"
+      x:Name="autorise" Title="Autorisation" Background="White">
+
+    <Grid>
+        <Canvas Background="LightGray" Width="500" Margin="450,148,450,148.2">
+            <TextBlock FontSize="25" TextAlignment="Center" HorizontalAlignment="Left" Text="Логин" VerticalAlignment="Top" Height="41" Width="100" Canvas.Top="56" Canvas.Left="61"/>
+            <TextBox x:Name="loginBox" BorderThickness="2" FontSize="25" TextAlignment="Left" HorizontalAlignment="Left" Height="43" TextWrapping="Wrap" Text="Введите логин" VerticalAlignment="Top" Width="212" RenderTransformOrigin="-0.934,2.424" Canvas.Left="217" Canvas.Top="54" GotFocus="LoginBoxFocused"/>
+            <TextBlock FontSize="25" TextAlignment="Center" HorizontalAlignment="Left" Text="Пароль" VerticalAlignment="Top" Height="41" Width="100" Canvas.Top="140" Canvas.Left="61"/>
+            <PasswordBox x:Name="passwordBox" FontSize="25" Canvas.Left="217" Canvas.Top="140" Height="41" Width="212"/>
+            <TextBlock FontSize="25" TextAlignment="Center" HorizontalAlignment="Left" Text="Подтвердите, что вы не робот" VerticalAlignment="Top" Height="39" Width="368" Canvas.Top="228" Canvas.Left="61"/>
+            <TextBlock x:Name="capture" FontSize="40" TextAlignment="Center" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Height="65" Width="176" Canvas.Top="304" Canvas.Left="61"/>
+            <TextBox x:Name="captureCheck" BorderThickness="2" FontSize="40" TextAlignment="Left" HorizontalAlignment="Left" Height="65" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="176" RenderTransformOrigin="-0.934,2.424" Canvas.Left="253" Canvas.Top="304" />
+        </Canvas>
+
+        <Button BorderThickness="3" Background="LightGray" Foreground="Black" FontSize="30" Content="Назад" HorizontalAlignment="Left" Margin="30,30,0,0" VerticalAlignment="Top" Width="130" Height="65" Click="BackButtonPressed"/>
+        <TextBlock x:Name="pageName" Background="Black" Foreground="White" TextAlignment="Center" FontSize="15" HorizontalAlignment="Center" Margin="450,0,450,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="45" Width="220" RenderTransformOrigin="0.5,0.5"/>
+        <Button x:Name="nextButton" BorderThickness="3" Background="LightGray" Foreground="Black" FontSize="30" Content="Далее" HorizontalAlignment="Left" Margin="1230,30,0,0" VerticalAlignment="Top" Width="130" Height="65" Click="NextButtonPressed"/>
+    </Grid>
+</Page>

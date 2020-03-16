@@ -1,0 +1,38 @@
+﻿<Page x:Class="Furniture.Pages.AddEquipmentPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Furniture.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="699" d:DesignWidth="1400"
+      x:Name="addEquipment" Title="Adding" Background="White">
+
+    <Grid>
+        <Button BorderThickness="3" Background="LightGray" Foreground="Black" FontSize="30" Content="Назад" HorizontalAlignment="Left" Margin="30,30,0,0" VerticalAlignment="Top" Width="130" Height="65" Click="BackButtonPressed"/>
+        <Button BorderThickness="3" Background="LightGray" Foreground="Black" FontSize="30" Content="Добавить" HorizontalAlignment="Left" Margin="1212,30,0,0" VerticalAlignment="Top" Width="148" Height="65" Click="AddButtonPressed"/>
+        <TextBlock x:Name="pageName" Background="Black" Foreground="White" TextAlignment="Center" FontSize="15" HorizontalAlignment="Center" Margin="450,0,450,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="45" Width="220" RenderTransformOrigin="0.5,0.5"/>
+        <TextBlock x:Name="message" Background="ForestGreen" Height="50" FontSize="30" TextAlignment="Center" Text="Оборудование успешно добавлено" Canvas.Top="52" Canvas.Left="10" Margin="426,45,426,604.2"/>
+        <Canvas Background="LightGray" Margin="121,133,121,32.2">
+            <TextBlock Height="50" Width="250" FontSize="30" TextAlignment="Center" Text="Маркировка" Canvas.Top="52" Canvas.Left="10"/>
+            <TextBlock Height="50" Width="250" FontSize="30" TextAlignment="Center" Text="Наименование" Canvas.Top="152" Canvas.Left="10"/>
+            <TextBlock Height="50" Width="260" FontSize="30" TextAlignment="Center" Text="Тип оборудования" Canvas.Top="252" Canvas.Left="10"/>
+            <TextBlock Height="50" Width="250" FontSize="30" TextAlignment="Center" Text="Дата покупки" Canvas.Top="352" Canvas.Left="10"/>
+            <TextBox x:Name="mark" Height="50" FontSize="30" Width="269" Canvas.Left="300" Canvas.Top="52"/>
+            <TextBox x:Name="name" Height="50" FontSize="30" Width="269" Canvas.Left="300" Canvas.Top="152"/>
+            <ComboBox x:Name="types" Height="50" FontSize="30" Width="269" Canvas.Left="300" Canvas.Top="252"/>
+            <TextBox IsReadOnly="True" x:Name="date" InputScope="Date" FontSize="30" Height="50" Width="274" Canvas.Left="26" Canvas.Top="407"/>
+            <Calendar x:Name="calendar" Canvas.Left="300" Canvas.Top="331" Height="193" Width="269" SelectedDatesChanged="DatePicked"/>
+            <TextBlock Height="50" Width="269" FontSize="30" TextAlignment="Center" Text="Характеристика" Canvas.Left="599" Canvas.Top="10"/>
+            <TextBlock Height="50" Width="258" FontSize="30" TextAlignment="Center" Text="Значение" Canvas.Left="874" Canvas.Top="10"/>
+            <ScrollViewer Canvas.Left="599" Height="472" Width="533" Canvas.Top="52">
+                <StackPanel x:Name="stack">
+                    <StackPanel x:Name="firstStack" Orientation="Horizontal">
+                        <TextBox x:Name="firstChar" Height="50" Width="269" FontSize="30" TextChanged="CharacteristicBoxTextChanged"/>
+                        <TextBox x:Name="firstVal" Height="50" Width="246" FontSize="30" TextChanged="ValueBoxTextChanged"/>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </Canvas>
+    </Grid>
+</Page>

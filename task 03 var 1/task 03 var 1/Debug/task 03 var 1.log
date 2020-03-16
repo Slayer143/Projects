@@ -1,0 +1,3 @@
+﻿  Source.cpp
+C:\sharaga\SP\task 03 var 1\task 03 var 1\Source.cpp(92,1): warning C4326:  return type of 'main' should be 'int' instead of 'void'
+  task 03 var 1.vcxproj -> C:\sharaga\SP\task 03 var 1\Debug\task 03 var 1.exe

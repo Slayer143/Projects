@@ -1,0 +1,4 @@
+﻿  Source.cpp
+C:\sharaga\SP\PR_08 var 1\PR_08 var 1\Source.cpp(7,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
+C:\sharaga\SP\PR_08 var 1\PR_08 var 1\Source.cpp(27,39): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+  PR_08 var 1.vcxproj -> C:\sharaga\SP\PR_08 var 1\Debug\PR_08 var 1.exe

@@ -1,0 +1,18 @@
+﻿<Page x:Class="Furniture.Pages.StartingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Furniture.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="699" d:DesignWidth="1400"
+      x:Name="start" Title="Starting Page" Background="White">
+
+    <Grid>
+        <Canvas HorizontalAlignment="Center" VerticalAlignment="Top">
+            <Button x:Name="oldUser" FontSize="15" BorderThickness="4" Background="LightGray" Content="Я регистрировался ранее" Width="200" Height="100" Canvas.Left="-101" Canvas.Top="381" Click="OldUser"/>
+            <Button x:Name="newUser" FontSize="15" BorderThickness="4" Background="LightGray" Content="Я новый пользователь" Width="200" Height="100" Canvas.Left="-101" Canvas.Top="219" Click="NewUser"/>
+        </Canvas>
+        <TextBlock x:Name="pageName" Background="Black" Foreground="White" TextAlignment="Center" FontSize="15" HorizontalAlignment="Left" Margin="582,0,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="45" Width="220" RenderTransformOrigin="0.5,0.5"/>
+    </Grid>
+</Page>

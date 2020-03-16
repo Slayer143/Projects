@@ -1,0 +1,4 @@
+﻿  Source.cpp
+C:\sharaga\SP\PR_07 var 1\PR_07 var 1\Source.cpp(7,1): warning C4326:  return type of 'main' should be 'int' instead of 'void'
+C:\sharaga\SP\PR_07 var 1\PR_07 var 1\Source.cpp(10,12): warning C4244:  'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  PR_07 var 1.vcxproj -> C:\sharaga\SP\PR_07 var 1\Debug\PR_07 var 1.exe
