@@ -1,0 +1,28 @@
+﻿<Page x:Class="VacancySearch.VacancySearchPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:VacancySearch"
+      xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
+      mc:Ignorable="d" 
+      d:DesignHeight="900" d:DesignWidth="1300"
+      Title="VacancySearch" Background="Azure">
+
+    <Grid>
+        <TextBlock Background="SkyBlue" FontSize="50" TextAlignment="Center" Text="{Binding Header, Mode=TwoWay}" Margin="80,10,80,694"/>
+
+        <ListView x:Name="myView" ItemsSource="{DynamicResource ResourceKey=_vacancies}" Margin="80,80,80,50" MouseDoubleClick="VacancySelected">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=SubdivisionName}" Width="400">Название подразделения</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=PositionName}" Width="400">Название должности</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Count}" Width="400">Кол-во свободных мест</GridViewColumn>
+                </GridView>
+            </ListView.View>
+            <ListView.Resources>
+                <col:ArrayList x:Key="_vacancies"/>
+            </ListView.Resources>
+        </ListView>
+    </Grid>
+</Page>
