@@ -20,40 +20,30 @@
   from AppointmentHistory
   rollback 
 
-  alter proc AddCandidate(
-  @staffId as int,
-  @name as nvarchar(40),
-  @lName as nvarchar(40),
-  @sName as nvarchar(40),
-  @gender as nvarchar(1),
-  @dateOfBirth as date,
-  @edLevel as nvarchar(60),
-  @phoneNum as nvarchar(13),
-  @subId as int,
-  @posId as int)
+  alter proc AppointCandidate(
+  @staffId as int)
   as
   begin tran
-  insert into Staff
-  values(
-	@staffId,
-	@name,
-	@lName,
-	@sName,
-	@gender,
-	@dateOfBirth,
-	@edLevel,
-	@phoneNum,
-	'рассматривается')
-
-  insert into AppointmentHistory(OrderId, StaffId, PositionId, SubdivisionId)
-  values(
-	(select MAX(OrderId) + 64
-	from AppointmentHistory),
-	@staffId,
-	@posId,
-	@subId)
-	
-	if @posId < 0 and @subId < 0
+  if not exists(select StaffId from Staff where StaffId = @staffId)
 	rollback
-	else
+  else
+	update AppointmentHistory
+	set датаПриема = GETDATE()
+	where StaffId = @staffId
 	commit
+
+  create proc GetCandidates
+  as
+  begin
+  select Staff.StaffId, LastName, [Name], SecondName, Gender, DateOfBirth, EducationLevel, PhoneNumber, SubdivisionName, PositionName
+  from Staff inner join AppointmentHistory
+  on Staff.StaffId = AppointmentHistory.StaffId
+  inner join Subdivision
+  on AppointmentHistory.SubdivisionId = Subdivision.SubdivisionId
+  inner join Position
+  on AppointmentHistory.PositionId = Position.PositionId
+  where AppointmentHistory.датаПриема is null
+  end
+
+
+
