@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Никита\source\repos\CybersportApp\CybersportApp\obj\Debug\
+C:\Projects\Projects\CybersportApp\CybersportApp\obj\Debug\
 CybersportApp
 none
 false
 DEBUG;TRACE
-C:\Users\Никита\source\repos\CybersportApp\CybersportApp\App.xaml
-2-240762172
+C:\Projects\Projects\CybersportApp\CybersportApp\App.xaml
+4647670721
 
-7-1212355278
-141183416626
-MainWindow.xaml;Pages\GreetingPage.xaml;
+14-6818764
+17-152343561
+MainWindow.xaml;Pages\AuthorizationPage.xaml;Pages\GreetingPage.xaml;Pages\RegistrationPage.xaml;
 
 False
 

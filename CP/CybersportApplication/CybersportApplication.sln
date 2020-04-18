@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30002.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CybersportApplication", "CybersportApplication\CybersportApplication.csproj", "{0D9E9C53-5779-4F50-908A-DAB96752205F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CybersportApplication.Core", "CybersportApplication.Core\CybersportApplication.Core.csproj", "{AC4D092A-3F54-4CDC-9EE4-5E2EA922B3FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0D9E9C53-5779-4F50-908A-DAB96752205F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D9E9C53-5779-4F50-908A-DAB96752205F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D9E9C53-5779-4F50-908A-DAB96752205F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D9E9C53-5779-4F50-908A-DAB96752205F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC4D092A-3F54-4CDC-9EE4-5E2EA922B3FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC4D092A-3F54-4CDC-9EE4-5E2EA922B3FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC4D092A-3F54-4CDC-9EE4-5E2EA922B3FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC4D092A-3F54-4CDC-9EE4-5E2EA922B3FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D83209D4-0965-4C5C-A989-D169868E8F34}
+	EndGlobalSection
+EndGlobal

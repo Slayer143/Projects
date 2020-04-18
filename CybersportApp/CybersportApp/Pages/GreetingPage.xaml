@@ -24,9 +24,9 @@
                 <ImageBrush x:Name="_myBrush"/>
             </Canvas.Background>
         </Canvas>
-        <Button x:Name="_registerButton" Opacity="0" Margin="0,0.4,0,0.2" Content="Register" FontSize="50" Foreground="Orchid" Grid.Row="1" Background="Black"/>
-        <Button x:Name="_authorizeButton" Opacity="0" Margin="0,0.4,0,0.2" Content="Authorize" FontSize="50" Foreground="Orchid" Grid.Row="1" Background="Black" Grid.Column="2"/>
-        <TextBlock x:Name="_greetingBlock" Opacity="0" Margin="10,84,10,83.6" Text="You are welcome" TextAlignment="Center" VerticalAlignment="Center" FontSize="65" Foreground="Orchid" Grid.ColumnSpan="3"/>
+        <Button x:Name="_registerButton" IsEnabled="False" Opacity="0" Margin="0,0.4,0,0.2" Content="Register" FontSize="50" Foreground="Orchid" Grid.Row="1" Background="Black" Command="{Binding GoRegister}"/>
+        <Button x:Name="_authorizeButton" IsEnabled="False" Opacity="0" Margin="0,0.4,0,0.2" Content="Authorize" FontSize="50" Foreground="Orchid" Grid.Row="1" Background="Black" Command="{Binding GoAuth}" Grid.Column="2"/>
+        <TextBlock x:Name="_greetingBlock" Opacity="0" Margin="10,74,10,63.6" Text="You are welcome" TextAlignment="Center" VerticalAlignment="Center" FontSize="65" Foreground="Orchid" Grid.ColumnSpan="3" Height="96"/>
         <TextBlock x:Name="_actionBlock" Opacity="0" Grid.Column="1" Margin="10,43.4,10,46.2" Text="Please choose the action" TextWrapping="Wrap" TextAlignment="Center" FontSize="50" Foreground="Orchid" Grid.Row="1"/>
     </Grid>
 </Page>

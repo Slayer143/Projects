@@ -73,6 +73,16 @@ namespace CybersportApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap abstract_gradient_pink_purple_stripes_on_purple_background {
+            get {
+                object obj = ResourceManager.GetObject("abstract_gradient_pink_purple_stripes_on_purple_background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap e898cbfa782239a43bd96e7f6453 {
             get {
                 object obj = ResourceManager.GetObject("e898cbfa782239a43bd96e7f6453", resourceCulture);
