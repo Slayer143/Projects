@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "r5Kzoy6fApJxGEg1EBKe3lvme1ly9CTbvHCASZHxFdhDGN3PRf4Bake47GFK3vM5CWsISZO2rvrZWnTFtQqgIw==",
+  "success": true,
+  "projectFilePath": "C:\\Projects\\Projects\\JSONPresentation\\JSONPresentation\\JSONPresentation.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Никита\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

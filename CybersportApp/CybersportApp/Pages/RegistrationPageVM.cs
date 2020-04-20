@@ -1,9 +1,12 @@
-﻿using Microsoft.Win32;
+﻿using CybersportApp.Core;
+using CybersportApp.Core.CybersportEntities;
+using Microsoft.Win32;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Linq;
 using System.Windows.Media.Imaging;
 
 namespace CybersportApp.Pages
@@ -130,29 +133,15 @@ namespace CybersportApp.Pages
             }
         }
 
-        private DateTimeOffset _birthDate { get; set; }
+        private string _birthDate { get; set; }
 
-        public DateTimeOffset BirthDate
+        public string BirthDate
         {
             get { return _birthDate; }
             set
             {
                 _birthDate = value;
                 OnPropertyChanged("BirthDate");
-            }
-        }
-
-        private RelayCommand _checkData { get; set; }
-
-        public RelayCommand CheckData
-        {
-            get
-            {
-                return _checkData ??
-                    (_checkData = new RelayCommand(x =>
-                    {
-
-                    }));
             }
         }
 
@@ -171,6 +160,59 @@ namespace CybersportApp.Pages
             }
         }
 
+        private RelayCommand _acceptForm { get; set; }
+
+        public RelayCommand AcceptForm
+        {
+            get
+            {
+                return _acceptForm ??
+                    (_acceptForm = new RelayCommand(x =>
+                    {
+                        if (Role != null
+                            && Login != null
+                            && BirthDate != null
+                            && Country != null
+                            && LastName != null
+                            && Name != null
+                            && Password != null)
+                        {
+                            if (!CheckPassword(Password))
+                                Password = "Incorrect password";
+
+                            if (!CybersportCore.CheckLogin(Login))
+                                Login = "Try another login";
+
+                            if (CheckPassword(Password)
+                                && CybersportCore.CheckLogin(Login))
+                            {
+                                CybersportAppNavigation.CurrentUser = new Users(
+                                    Login,
+                                    Password,
+                                    LastName,
+                                    Name,
+                                    DateTimeOffset.Parse(BirthDate),
+                                    CybersportCore.CountriesCollection.Where(y => y.Name == Country).FirstOrDefault().CountryId,
+                                    CybersportCore.RolesCollection.Where(y => y.Name == Role).FirstOrDefault().RoleId,
+                                    ImageContent);
+
+                                CybersportCore.AddUser(CybersportAppNavigation.CurrentUser);
+
+                                CybersportAppNavigation.CurrentWindow.DataContext = new MainWindowVM(CybersportAppNavigation.CurrentUser.RoleId);
+
+                                if (CybersportAppNavigation.CurrentProfileMenuPage != null)
+                                    CybersportAppNavigation.Service.Navigate(CybersportAppNavigation.CurrentProfileMenuPage);
+                                else
+                                {
+                                    CybersportAppNavigation.CurrentProfileMenuPage = new ProfileMenu();
+                                    CybersportAppNavigation.Service.Navigate(CybersportAppNavigation.CurrentProfileMenuPage);
+                                }
+                            }
+                        }
+                    }));
+            }
+
+        }
         private RelayCommand _getImage { get; set; }
 
         public RelayCommand GetImage
@@ -198,6 +240,9 @@ namespace CybersportApp.Pages
 
         public RegistrationPageVM()
         {
+            Roles = CybersportCore.GetRoles();
+            Countries = CybersportCore.GetCountries();
+
             using (MemoryStream memory = new MemoryStream())
             {
                 Properties.Resources.abstract_gradient_pink_purple_stripes_on_purple_background.Save(memory, ImageFormat.Jpeg);
@@ -208,6 +253,25 @@ namespace CybersportApp.Pages
                 BackgroundImage.CacheOption = BitmapCacheOption.OnLoad;
                 BackgroundImage.EndInit();
             }
+        }
+
+        private bool CheckPassword(string password)
+        {
+            string symbols = "!@#$%^",
+                numerals = "1234567890",
+                letters = "QWERTYUIOPLKJHGFDSAZXCVBNM";
+
+            if (password == null)
+                return false;
+
+            if (password.Length > 5)
+            {
+                return (password.Intersect(symbols).Count() > 0
+                    && password.Intersect(numerals).Count() > 0
+                    && password.Intersect(letters).Count() > 0);
+            }
+
+            return false;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

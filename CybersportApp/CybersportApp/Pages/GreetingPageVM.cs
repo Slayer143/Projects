@@ -12,7 +12,13 @@ namespace CybersportApp.Pages
                 return _goRegister ??
                     (_goRegister = new RelayCommand(x =>
                     {
-                        CybersportAppNavigation.Service.Navigate(new RegistrationPage());
+                        if (CybersportAppNavigation.CurrentRegistrationPage != null)
+                            CybersportAppNavigation.Service.Navigate(CybersportAppNavigation.CurrentRegistrationPage);
+                        else
+                        {
+                            CybersportAppNavigation.CurrentRegistrationPage = new RegistrationPage();
+                            CybersportAppNavigation.Service.Navigate(CybersportAppNavigation.CurrentRegistrationPage);
+                        }
                     }));
             }
         }
@@ -25,7 +31,13 @@ namespace CybersportApp.Pages
                 return _goAuth ??
                     (_goAuth = new RelayCommand(x =>
                     {
-                        CybersportAppNavigation.Service.Navigate(new AuthorizationPage());
+                        if (CybersportAppNavigation.CurrentAuthorizationPage != null)
+                            CybersportAppNavigation.Service.Navigate(CybersportAppNavigation.CurrentAuthorizationPage);
+                        else
+                        {
+                            CybersportAppNavigation.CurrentRegistrationPage = new AuthorizationPage();
+                            CybersportAppNavigation.Service.Navigate(CybersportAppNavigation.CurrentRegistrationPage);
+                        }
                     }));
             }
         }

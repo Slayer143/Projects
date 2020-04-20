@@ -1,5 +1,6 @@
 ﻿using CybersportApp.Pages;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace CybersportApp
 {
@@ -12,8 +13,15 @@ namespace CybersportApp
         {
             InitializeComponent();
 
-            baseFrame.Content = new GreetingPage();
+            CybersportAppNavigation.CurrentGreetingPage = new GreetingPage();
+            baseFrame.Content = CybersportAppNavigation.CurrentGreetingPage;
+            //baseFrame.Content = new RegistrationPage();
 
+            //baseFrame.Content = new AuthorizationPage();
+
+            DataContext = new MainWindowVM();
+
+            CybersportAppNavigation.CurrentWindow = this;
             CybersportAppNavigation.Service = baseFrame.NavigationService;
         }
     }

@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using CybersportApp.Core;
+using CybersportApp.Core.CybersportEntities;
+using System.ComponentModel;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Media.Imaging;
@@ -43,6 +45,18 @@ namespace CybersportApp.Pages
             }
         }
 
+        private string _systemMessage { get; set; }
+
+        public string SystemMessage
+        {
+            get { return _systemMessage; }
+            set
+            {
+                _systemMessage = value;
+                OnPropertyChanged("SystemMessage");
+            }
+        }
+
         private RelayCommand _back { get; set; }
 
         public RelayCommand Back
@@ -67,8 +81,24 @@ namespace CybersportApp.Pages
                 return _checkUser ??
                     (_checkUser = new RelayCommand(x =>
                     {
-                        //if (CybersportAppNavigation.CheckAuthUserData(Login, Password))
-                        //    CybersportAppNavigation.Service.Navigate(new RegistrationPage());
+                        var user = CybersportCore.CheckUser(Login, Password);
+
+                        if (user != null)
+                        {
+                            CybersportAppNavigation.CurrentUser = user;
+
+                            CybersportAppNavigation.CurrentWindow.DataContext = new MainWindowVM(CybersportAppNavigation.CurrentUser.RoleId);
+
+                            if (CybersportAppNavigation.CurrentProfileMenuPage != null)
+                                CybersportAppNavigation.Service.Navigate(CybersportAppNavigation.CurrentProfileMenuPage);
+                            else
+                            {
+                                CybersportAppNavigation.CurrentProfileMenuPage = new ProfileMenu();
+                                CybersportAppNavigation.Service.Navigate(CybersportAppNavigation.CurrentProfileMenuPage);
+                            }
+                        }
+                        else
+                            SystemMessage = "You entered wrong data";
                     }));
             }
         }

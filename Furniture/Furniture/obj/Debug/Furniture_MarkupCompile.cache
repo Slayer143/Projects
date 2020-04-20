@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\sharaga\PR_Larionova\furniture\Furniture\Furniture\obj\Debug\
+C:\Projects\Projects\Furniture\Furniture\obj\Debug\
 Furniture
 none
 false
 DEBUG;TRACE
-C:\sharaga\PR_Larionova\furniture\Furniture\Furniture\App.xaml
+C:\Projects\Projects\Furniture\Furniture\App.xaml
 15-720066430
 
 20-987443602
-146-1610153992
+45-945473633
 MainWindow.xaml;Pages\AddEquipmentPage.xaml;Pages\Autorisation.xaml;Pages\Director.xaml;Pages\DeputyDirector.xaml;Pages\EditorPage.xaml;Pages\EquipmentPage.xaml;Pages\Master.xaml;Pages\Manager.xaml;Pages\Customer.xaml;Pages\NewOrderPage.xaml;Pages\OrdersViewPage.xaml;Pages\Registration.xaml;Pages\ShowMaterial.xaml;Pages\StartingPage.xaml;
 
 False

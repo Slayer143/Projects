@@ -5,8 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CybersportApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="1200" Background="AliceBlue">
+        Title="MainWindow" Height="730" Width="1200" Background="AliceBlue" x:Name="cybersportMainWindow">
     <Grid>
-        <Frame x:Name="baseFrame" NavigationUIVisibility="Hidden" Margin="0,0,-0.4,0.4"/>
+        <Frame x:Name="baseFrame" NavigationUIVisibility="Hidden" Margin="0,0,-0.4,0.4" Grid.ColumnSpan="{Binding ColumnRange}" Grid.Column="{Binding ColumnPosition}" Grid.RowSpan="{Binding RowPosition}"/>
+
+        <Button Content="Exit" FontSize="60" x:Name="exit" Command="{Binding Exit}" Margin="0,0,0.4,0" Background="DarkOrchid" Foreground="Black" BorderBrush="Purple" BorderThickness="2"/>
+        <Button Content="My profile" FontSize="30" x:Name="first" Command="{Binding GoToProfile}" Margin="0,0,0.4,0" Background="MediumOrchid" BorderBrush="Purple" BorderThickness="2" Grid.Row="1"/>
+        <Button Content="See users" FontSize="30" x:Name="second" Command="{Binding GoToUsers}" Margin="0,0,0.4,0" Background="MediumOrchid" BorderBrush="Purple" BorderThickness="2" Grid.Row="2"/>
+        <Button Content="See teams" FontSize="30" x:Name="third" Command="{Binding GoToTeams}" Margin="0,0,0.4,0" Background="MediumOrchid" BorderBrush="Purple" BorderThickness="2" Grid.Row="3"/>
+        <Button Content="See tournaments" FontSize="30" x:Name="forth" Command="{Binding GoToTournaments}" Margin="0,0,0.4,0" Background="MediumOrchid" BorderBrush="Purple" BorderThickness="2" Grid.Row="4"/>
+        <Button Content="See my detailed info" FontSize="30" x:Name="fifth" Command="{Binding GoToDetails}" Margin="0,0,0.4,0" Background="MediumOrchid" BorderBrush="Purple" BorderThickness="2" Grid.Row="5"/>
+
+        <Grid.Background>
+            <ImageBrush ImageSource="{Binding BackgroundImage}"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="{Binding RowHeight}"/>
+            <RowDefinition Height="{Binding RowHeight}"/>
+            <RowDefinition Height="{Binding RowHeight}"/>
+            <RowDefinition Height="{Binding RowHeight}"/>
+            <RowDefinition Height="{Binding LastRowHeight}"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="{Binding FirstColumnWidth}"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+
+
     </Grid>
 </Window>
