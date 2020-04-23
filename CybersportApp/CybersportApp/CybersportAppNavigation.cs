@@ -31,6 +31,8 @@ namespace CybersportApp
 
         public static Users CurrentUser { get; set; }
 
+        public static PlayersInformation CurrentUserInfo { get; set; }
+
         public static NavigationService Service { get; set; }
     }
 }

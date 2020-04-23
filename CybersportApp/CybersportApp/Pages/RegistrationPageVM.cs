@@ -196,7 +196,9 @@ namespace CybersportApp.Pages
                                     CybersportCore.RolesCollection.Where(y => y.Name == Role).FirstOrDefault().RoleId,
                                     ImageContent);
 
-                                CybersportCore.AddUser(CybersportAppNavigation.CurrentUser);
+                                CybersportAppNavigation.CurrentUserInfo = new PlayersInformation(CybersportAppNavigation.CurrentUser.UserId);
+
+                                CybersportCore.AddUser(CybersportAppNavigation.CurrentUser, CybersportAppNavigation.CurrentUserInfo);
 
                                 CybersportAppNavigation.CurrentWindow.DataContext = new MainWindowVM(CybersportAppNavigation.CurrentUser.RoleId);
 

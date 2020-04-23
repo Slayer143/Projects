@@ -15,6 +15,42 @@ namespace CybersportApp
 {
     public class MainWindowVM : INotifyPropertyChanged
     {
+        private bool _generalIsEnabledControl { get; set; }
+
+        public bool GeneralIsEnabledControl
+        {
+            get { return _generalIsEnabledControl; }
+            set
+            {
+                _generalIsEnabledControl = value;
+                OnPropertyChanged("GeneralIsEnabledControl");
+            }
+        }
+
+        private Visibility _exitVisibilityControl { get; set; }
+
+        public Visibility ExitVisibilityControl
+        {
+            get { return _exitVisibilityControl; }
+            set
+            {
+                _exitVisibilityControl = value;
+                OnPropertyChanged("ExitVisibilityControl");
+            }
+        }
+
+        private bool _exitIsEnableControl { get; set; }
+
+        public bool ExitIsEnableControl
+        {
+            get { return _exitIsEnableControl; }
+            set
+            {
+                _exitIsEnableControl = value;
+                OnPropertyChanged("ExitIsEnableControl");
+            }
+        }
+
         private string _rowHeight { get; set; }
 
         public string RowHeight
@@ -99,6 +135,140 @@ namespace CybersportApp
             }
         }
 
+        private RelayCommand _goToProfile { get; set; }
+
+        public RelayCommand GoToProfile
+        {
+            get
+            {
+                return _goToProfile ??
+                    (_goToProfile = new RelayCommand(x =>
+                    {
+                        if (CybersportAppNavigation.CurrentProfileMenuPage != null)
+                            CybersportAppNavigation.Service.Navigate(CybersportAppNavigation.CurrentProfileMenuPage);
+                        else
+                        {
+                            CybersportAppNavigation.CurrentProfileMenuPage = new ProfileMenu();
+                            CybersportAppNavigation.Service.Navigate(CybersportAppNavigation.CurrentProfileMenuPage);
+                        }
+                    }));
+            }
+        }
+
+        private RelayCommand _goToUsers { get; set; }
+
+        public RelayCommand GoToUsers
+        {
+            get
+            {
+                return _goToUsers ??
+                    (_goToUsers = new RelayCommand(x =>
+                    {
+                        if (CybersportAppNavigation.CurrentUsersPage != null)
+                            CybersportAppNavigation.Service.Navigate(CybersportAppNavigation.CurrentUsersPage);
+                        else
+                        {
+                            CybersportAppNavigation.CurrentUsersPage = new UsersViewPage();
+                            CybersportAppNavigation.Service.Navigate(CybersportAppNavigation.CurrentUsersPage);
+                        }
+                    }));
+            }
+        }
+
+        private RelayCommand _goToTeams { get; set; }
+
+        public RelayCommand GoToTeams
+        {
+            get
+            {
+                return _goToTeams ??
+                    (_goToTeams = new RelayCommand(x =>
+                    {
+                        if (CybersportAppNavigation.CurrentTeamsPage != null)
+                            CybersportAppNavigation.Service.Navigate(CybersportAppNavigation.CurrentTeamsPage);
+                        else
+                        {
+                            CybersportAppNavigation.CurrentTeamsPage = new TeamsViewPage();
+                            CybersportAppNavigation.Service.Navigate(CybersportAppNavigation.CurrentTeamsPage);
+                        }
+                    }));
+            }
+        }
+
+        private RelayCommand _goToTournaments { get; set; }
+
+        public RelayCommand GoToTournaments
+        {
+            get
+            {
+                return _goToTournaments ??
+                    (_goToTournaments = new RelayCommand(x =>
+                    {
+                        if (CybersportAppNavigation.CurrentTournamentsPage != null)
+                            CybersportAppNavigation.Service.Navigate(CybersportAppNavigation.CurrentTournamentsPage);
+                        else
+                        {
+                            CybersportAppNavigation.CurrentTournamentsPage = new TournamentsViewPage();
+                            CybersportAppNavigation.Service.Navigate(CybersportAppNavigation.CurrentTournamentsPage);
+                        }
+                    }));
+            }
+        }
+
+        private RelayCommand _goToDetails { get; set; }
+
+        public RelayCommand GoToDetails
+        {
+            get
+            {
+                return _goToDetails ??
+                    (_goToDetails = new RelayCommand(x =>
+                    {
+                        if (CybersportAppNavigation.CurrentDetailsPage != null)
+                            CybersportAppNavigation.Service.Navigate(CybersportAppNavigation.CurrentDetailsPage);
+                        else
+                        {
+                            CybersportAppNavigation.CurrentDetailsPage = new DetailsPage();
+                            CybersportAppNavigation.Service.Navigate(CybersportAppNavigation.CurrentDetailsPage);
+                        }
+                    }));
+            }
+        }
+
+        private RelayCommand _exitAgreement { get; set; }
+
+        public RelayCommand ExitAgreement
+        {
+            get
+            {
+                return _exitAgreement ??
+                    (_exitAgreement = new RelayCommand(x =>
+                    {
+                        ExitIsEnableControl = true;
+                        ExitVisibilityControl = Visibility.Visible;
+
+                        GeneralIsEnabledControl = false;
+                    }));
+            }
+        }
+
+        private RelayCommand _denyExit { get; set; }
+
+        public RelayCommand DenyExit
+        {
+            get
+            {
+                return _denyExit ??
+                    (_denyExit = new RelayCommand(x =>
+                    {
+                        ExitIsEnableControl = false;
+                        ExitVisibilityControl = Visibility.Hidden;
+
+                        GeneralIsEnabledControl = true;
+                    }));
+            }
+        }
+
         private RelayCommand _exit { get; set; }
 
         public RelayCommand Exit
@@ -110,7 +280,16 @@ namespace CybersportApp
                     {
                         CybersportAppNavigation.CurrentUser = null;
 
-                        CybersportAppNavigation.Service.Navigate(CybersportAppNavigation.CurrentGreetingPage);
+                        if (CybersportAppNavigation.CurrentGreetingPage != null)
+                            CybersportAppNavigation.Service.Navigate(CybersportAppNavigation.CurrentGreetingPage);
+                        else
+                        {
+                            CybersportAppNavigation.CurrentGreetingPage = new GreetingPage();
+
+                            CybersportAppNavigation.CurrentWindow.DataContext = new MainWindowVM();
+
+                            CybersportAppNavigation.Service.Navigate(CybersportAppNavigation.CurrentGreetingPage);
+                        }
                     }));
             }
         }
@@ -124,6 +303,11 @@ namespace CybersportApp
             FirstColumnWidth = "0";
 
             RowHeight = LastRowHeight = "0";
+
+            ExitIsEnableControl = false;
+            ExitVisibilityControl = Visibility.Hidden;
+
+            GeneralIsEnabledControl = true;
         }
 
         public MainWindowVM(int userCode)
@@ -152,6 +336,11 @@ namespace CybersportApp
             ColumnRange = 1;
             ColumnPosition = 3;
             RowPosition = 6;
+
+            ExitIsEnableControl = false;
+            ExitVisibilityControl = Visibility.Hidden;
+
+            GeneralIsEnabledControl = true;
         }
 
         protected virtual void OnPropertyChanged(string propertyName)

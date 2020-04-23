@@ -15,6 +15,18 @@ namespace CybersportApp.Core
 
         public DbSet<Teams> Teams { get; set; }
 
+        public DbSet<Disciplines> Disciplines { get; set; }
+
+        public DbSet<Tournaments> Tournaments { get; set; }
+
+        public DbSet<TournamentsTypes> TournamentsTypes { get; set; }
+
+        public DbSet<AccountStatuses> AccountStatuses { get; set; }
+
+        public DbSet<Ratings> Ratings { get; set; }
+
+        public DbSet<PlayersInformation> PlayersInformation { get; set; }
+
         public CybersportConnection()
             : this(@"Data Source=localhost\SQLEXPRESS;Initial Catalog=CybersportDb;Integrated Security=true;")
         {

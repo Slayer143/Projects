@@ -88,7 +88,7 @@ namespace CybersportApp.Pages
             FullName = $"{CybersportAppNavigation.CurrentUser.LastName} " +
                 $"{CybersportAppNavigation.CurrentUser.Name} " +
                 $"{CybersportAppNavigation.CurrentUser.SecondName}";
-            BirthDate = CybersportAppNavigation.CurrentUser.BirthDate.ToString().Substring(7);
+            BirthDate = CybersportAppNavigation.CurrentUser.BirthDate.ToString().Substring(0, 10);
 
             Country = GetCountry();
             Team = CybersportCore.GetTeam(CybersportAppNavigation.CurrentUser.TeamId);

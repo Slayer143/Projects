@@ -97,3 +97,11 @@ C:\Projects\Projects\CybersportApp\CybersportApp\bin\Debug\zh-Hans\Microsoft.Dat
 C:\Projects\Projects\CybersportApp\CybersportApp\bin\Debug\zh-Hant\Microsoft.Data.SqlClient.resources.dll
 C:\Projects\Projects\CybersportApp\CybersportApp\obj\Debug\Pages\ProfileMenu.g.cs
 C:\Projects\Projects\CybersportApp\CybersportApp\obj\Debug\Pages\ProfileMenu.baml
+C:\Projects\Projects\CybersportApp\CybersportApp\obj\Debug\Pages\DetailsPage.g.cs
+C:\Projects\Projects\CybersportApp\CybersportApp\obj\Debug\Pages\TeamsViewPage.g.cs
+C:\Projects\Projects\CybersportApp\CybersportApp\obj\Debug\Pages\TournamentsViewPage.g.cs
+C:\Projects\Projects\CybersportApp\CybersportApp\obj\Debug\Pages\UsersViewPage.g.cs
+C:\Projects\Projects\CybersportApp\CybersportApp\obj\Debug\Pages\DetailsPage.baml
+C:\Projects\Projects\CybersportApp\CybersportApp\obj\Debug\Pages\TeamsViewPage.baml
+C:\Projects\Projects\CybersportApp\CybersportApp\obj\Debug\Pages\TournamentsViewPage.baml
+C:\Projects\Projects\CybersportApp\CybersportApp\obj\Debug\Pages\UsersViewPage.baml

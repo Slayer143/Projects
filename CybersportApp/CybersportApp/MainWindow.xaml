@@ -7,14 +7,18 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="730" Width="1200" Background="AliceBlue" x:Name="cybersportMainWindow">
     <Grid>
-        <Frame x:Name="baseFrame" NavigationUIVisibility="Hidden" Margin="0,0,-0.4,0.4" Grid.ColumnSpan="{Binding ColumnRange}" Grid.Column="{Binding ColumnPosition}" Grid.RowSpan="{Binding RowPosition}"/>
+        <Frame x:Name="baseFrame" IsEnabled="{Binding GeneralIsEnabledControl}" NavigationUIVisibility="Hidden" Margin="0,0,-0.4,0.4" Grid.ColumnSpan="{Binding ColumnRange}" Grid.Column="{Binding ColumnPosition}" Grid.RowSpan="{Binding RowPosition}"/>
 
-        <Button Content="Exit" FontSize="60" x:Name="exit" Command="{Binding Exit}" Margin="0,0,0.4,0" Background="DarkOrchid" Foreground="Black" BorderBrush="Purple" BorderThickness="2"/>
-        <Button Content="My profile" FontSize="30" x:Name="first" Command="{Binding GoToProfile}" Margin="0,0,0.4,0" Background="MediumOrchid" BorderBrush="Purple" BorderThickness="2" Grid.Row="1"/>
-        <Button Content="See users" FontSize="30" x:Name="second" Command="{Binding GoToUsers}" Margin="0,0,0.4,0" Background="MediumOrchid" BorderBrush="Purple" BorderThickness="2" Grid.Row="2"/>
-        <Button Content="See teams" FontSize="30" x:Name="third" Command="{Binding GoToTeams}" Margin="0,0,0.4,0" Background="MediumOrchid" BorderBrush="Purple" BorderThickness="2" Grid.Row="3"/>
-        <Button Content="See tournaments" FontSize="30" x:Name="forth" Command="{Binding GoToTournaments}" Margin="0,0,0.4,0" Background="MediumOrchid" BorderBrush="Purple" BorderThickness="2" Grid.Row="4"/>
-        <Button Content="See my detailed info" FontSize="30" x:Name="fifth" Command="{Binding GoToDetails}" Margin="0,0,0.4,0" Background="MediumOrchid" BorderBrush="Purple" BorderThickness="2" Grid.Row="5"/>
+        <TextBlock Text="Are you sure you want to exit?" Visibility="{Binding ExitVisibilityControl}" IsEnabled="{Binding ExitIsEnableControl}" TextAlignment="Center" Foreground="DarkOrchid" FontSize="30" Canvas.Left="10" Canvas.Top="10" Margin="212.6,18,213.6,47.8" Grid.Column="1"/>
+        <Button Command="{Binding Exit}" Visibility="{Binding ExitVisibilityControl}" IsEnabled="{Binding ExitIsEnableControl}" Content="Yes" BorderBrush="Orchid" BorderThickness="2" Foreground="Black" Background="DarkOrchid" FontSize="40" Canvas.Left="10" Canvas.Top="120" Grid.Column="1" Margin="9.6,53,756.6,9.8"/>
+        <Button Command="{Binding DenyExit}" Visibility="{Binding ExitVisibilityControl}" IsEnabled="{Binding ExitIsEnableControl}" Content="No" BorderBrush="Orchid" BorderThickness="2" Foreground="Black" Background="DarkOrchid" FontSize="40" Canvas.Left="666" Canvas.Top="123" Grid.Column="1" Margin="756.6,53,9.6,10.8"/>
+
+        <Button IsEnabled="{Binding GeneralIsEnabledControl}" Content="Exit" FontSize="60" x:Name="exit" Command="{Binding ExitAgreement}" Margin="0,0,0.4,0" Background="DarkOrchid" Foreground="Black" BorderBrush="Purple" BorderThickness="2"/>
+        <Button IsEnabled="{Binding GeneralIsEnabledControl}" Content="My profile" FontSize="30" x:Name="first" Command="{Binding GoToProfile}" Margin="0,0,0.4,0" Background="MediumOrchid" BorderBrush="Purple" BorderThickness="2" Grid.Row="1"/>
+        <Button IsEnabled="{Binding GeneralIsEnabledControl}" Content="View users" FontSize="30" x:Name="second" Command="{Binding GoToUsers}" Margin="0,0,0.4,0" Background="MediumOrchid" BorderBrush="Purple" BorderThickness="2" Grid.Row="2"/>
+        <Button IsEnabled="{Binding GeneralIsEnabledControl}" Content="View teams" FontSize="30" x:Name="third" Command="{Binding GoToTeams}" Margin="0,0,0.4,0" Background="MediumOrchid" BorderBrush="Purple" BorderThickness="2" Grid.Row="3"/>
+        <Button IsEnabled="{Binding GeneralIsEnabledControl}" Content="View tournaments" FontSize="30" x:Name="forth" Command="{Binding GoToTournaments}" Margin="0,0,0.4,0" Background="MediumOrchid" BorderBrush="Purple" BorderThickness="2" Grid.Row="4"/>
+        <Button IsEnabled="{Binding GeneralIsEnabledControl}" Content="View my detailed info" FontSize="30" x:Name="fifth" Command="{Binding GoToDetails}" Margin="0,0,0.4,0" Background="MediumOrchid" BorderBrush="Purple" BorderThickness="2" Grid.Row="5"/>
 
         <Grid.Background>
             <ImageBrush ImageSource="{Binding BackgroundImage}"/>
@@ -31,7 +35,5 @@
             <ColumnDefinition Width="{Binding FirstColumnWidth}"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
-
-
     </Grid>
 </Window>

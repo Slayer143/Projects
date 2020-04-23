@@ -86,6 +86,7 @@ namespace CybersportApp.Pages
                         if (user != null)
                         {
                             CybersportAppNavigation.CurrentUser = user;
+                            CybersportAppNavigation.CurrentUserInfo = CybersportCore.GetUserInfo(user.UserId);
 
                             CybersportAppNavigation.CurrentWindow.DataContext = new MainWindowVM(CybersportAppNavigation.CurrentUser.RoleId);
 

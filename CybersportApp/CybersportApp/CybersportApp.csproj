@@ -132,6 +132,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\DetailsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\GreetingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -144,6 +148,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\TeamsViewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TournamentsViewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\UsersViewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainWindowVM.cs" />
@@ -151,6 +167,10 @@
       <DependentUpon>AuthorizationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\AuthorizationPageVM.cs" />
+    <Compile Include="Pages\DetailsPage.xaml.cs">
+      <DependentUpon>DetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DetailsPageVM.cs" />
     <Compile Include="Pages\GreetingPage.xaml.cs">
       <DependentUpon>GreetingPage.xaml</DependentUpon>
     </Compile>
@@ -164,6 +184,18 @@
     </Compile>
     <Compile Include="Pages\RelayCommand.cs" />
     <Compile Include="Pages\RegistrationPageVM.cs" />
+    <Compile Include="Pages\TeamsViewPage.xaml.cs">
+      <DependentUpon>TeamsViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TeamsViewVM.cs" />
+    <Compile Include="Pages\TournamentsViewPage.xaml.cs">
+      <DependentUpon>TournamentsViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TournamentsViewPageVM.cs" />
+    <Compile Include="Pages\UsersViewPage.xaml.cs">
+      <DependentUpon>UsersViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UsersViewPageVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

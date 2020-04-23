@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Projects\Projects\CybersportApp\CybersportApp\App.xaml
-5-956814792
+9-1497998721
 
-16376002600
+247154153
 20-1358533628
-MainWindow.xaml;Pages\AuthorizationPage.xaml;Pages\GreetingPage.xaml;Pages\ProfileMenu.xaml;Pages\RegistrationPage.xaml;
+MainWindow.xaml;Pages\AuthorizationPage.xaml;Pages\DetailsPage.xaml;Pages\GreetingPage.xaml;Pages\ProfileMenu.xaml;Pages\RegistrationPage.xaml;Pages\TeamsViewPage.xaml;Pages\TournamentsViewPage.xaml;Pages\UsersViewPage.xaml;
 
 False
 

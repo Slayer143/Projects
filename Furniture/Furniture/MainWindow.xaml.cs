@@ -26,7 +26,7 @@ namespace Furniture
         {
             InitializeComponent();
 
-            //baseFrame.Content = new StartingPage();
+            baseFrame.Content = new StartingPage();
 
             //baseFrame.Content = new EquipmentPage();
 
@@ -40,7 +40,7 @@ namespace Furniture
 
             //baseFrame.Content = new DeputyDirector();
 
-            baseFrame.Content = new Customer(" loginDEyyj2018");
+            //baseFrame.Content = new Customer(" loginDEyyj2018");
 
             Viewer.Title = "Furniture Store";
         }
