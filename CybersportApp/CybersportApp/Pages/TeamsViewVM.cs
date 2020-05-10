@@ -1,12 +1,7 @@
 ﻿using CybersportApp.Core;
 using CybersportApp.Core.ModelsForList;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CybersportApp.Pages
 {
@@ -69,6 +64,20 @@ namespace CybersportApp.Pages
             {
                 _teamsList = value;
                 OnPropertyChanged("TeamsList");
+            }
+        }
+
+        private RelayCommand _addTeam { get; set; }
+
+        public RelayCommand AddTeam
+        {
+            get
+            {
+                return _addTeam ??
+                    (_addTeam = new RelayCommand(x =>
+                    {
+                        CybersportAppNavigation.Service.Navigate(new TeamAddingPage());
+                    }));
             }
         }
 

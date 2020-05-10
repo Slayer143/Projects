@@ -115,6 +115,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="DialogueStartWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -124,6 +128,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="CybersportAppNavigation.cs" />
+    <Compile Include="DialogueStartWindow.xaml.cs">
+      <DependentUpon>DialogueStartWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -140,6 +147,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\MessagesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\ProfileMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -148,7 +159,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\TeamAddingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\TeamsViewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TournamentAddingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -171,10 +190,15 @@
       <DependentUpon>DetailsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\DetailsPageVM.cs" />
+    <Compile Include="DialogueStartWindowVM.cs" />
     <Compile Include="Pages\GreetingPage.xaml.cs">
       <DependentUpon>GreetingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\GreetingPageVM.cs" />
+    <Compile Include="Pages\MessagesPage.xaml.cs">
+      <DependentUpon>MessagesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MessagesPageVM.cs" />
     <Compile Include="Pages\ProfileMenu.xaml.cs">
       <DependentUpon>ProfileMenu.xaml</DependentUpon>
     </Compile>
@@ -184,10 +208,18 @@
     </Compile>
     <Compile Include="Pages\RelayCommand.cs" />
     <Compile Include="Pages\RegistrationPageVM.cs" />
+    <Compile Include="Pages\TeamAddingPage.xaml.cs">
+      <DependentUpon>TeamAddingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TeamAddingPageVM.cs" />
     <Compile Include="Pages\TeamsViewPage.xaml.cs">
       <DependentUpon>TeamsViewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\TeamsViewVM.cs" />
+    <Compile Include="Pages\TournamentAddingPage.xaml.cs">
+      <DependentUpon>TournamentAddingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TournamentAddingPageVM.cs" />
     <Compile Include="Pages\TournamentsViewPage.xaml.cs">
       <DependentUpon>TournamentsViewPage.xaml</DependentUpon>
     </Compile>

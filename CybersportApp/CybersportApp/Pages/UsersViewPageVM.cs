@@ -1,12 +1,7 @@
 ﻿using CybersportApp.Core;
 using CybersportApp.Core.ModelsForList;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CybersportApp.Pages
 {
@@ -26,7 +21,7 @@ namespace CybersportApp.Pages
 
         public UsersViewPageVM()
         {
-            UsersList = CybersportCore.GetUsers();
+            UsersList = CybersportCore.GetUsers(CybersportAppNavigation.CurrentUser.Login);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

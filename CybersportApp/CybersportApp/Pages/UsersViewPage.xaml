@@ -9,7 +9,7 @@
       Title="UsersViewPage">
 
     <Grid>
-        <ListView Margin="10,9,10,10" Grid.Row="0" ItemsSource="{Binding UsersList}" FontSize="20">
+        <ListView x:Name="view" Margin="10,9,10,10" Grid.Row="0" ItemsSource="{Binding UsersList}" FontSize="20" MouseDoubleClick="ShowUser">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=Login}" Width="180">Login</GridViewColumn>

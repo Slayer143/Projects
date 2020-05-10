@@ -131,6 +131,7 @@
     <Compile Include="CybersportEntities\AccountStatuses.cs" />
     <Compile Include="CybersportEntities\Countries.cs" />
     <Compile Include="CybersportEntities\Disciplines.cs" />
+    <Compile Include="CybersportEntities\Messages.cs" />
     <Compile Include="CybersportEntities\PlayersInformation.cs" />
     <Compile Include="CybersportEntities\Raitings.cs" />
     <Compile Include="CybersportEntities\Roles.cs" />

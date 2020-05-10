@@ -1,5 +1,4 @@
 ﻿using CybersportApp.Core;
-using CybersportApp.Core.CybersportEntities;
 using System.ComponentModel;
 using System.Drawing.Imaging;
 using System.IO;

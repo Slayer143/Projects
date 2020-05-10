@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CybersportApp", "Cybersport
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CybersportApp.Core", "CybersportApp.Core\CybersportApp.Core.csproj", "{B2F55C25-675D-4C95-A768-6DECCA030599}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CybersportAppCore.Test", "CybersportAppCore.Test\CybersportAppCore.Test.csproj", "{C3D86707-9F85-4086-A3E5-1F9E94484106}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,18 @@ Global
 		{B2F55C25-675D-4C95-A768-6DECCA030599}.Release|x64.Build.0 = Release|Any CPU
 		{B2F55C25-675D-4C95-A768-6DECCA030599}.Release|x86.ActiveCfg = Release|Any CPU
 		{B2F55C25-675D-4C95-A768-6DECCA030599}.Release|x86.Build.0 = Release|Any CPU
+		{C3D86707-9F85-4086-A3E5-1F9E94484106}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3D86707-9F85-4086-A3E5-1F9E94484106}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3D86707-9F85-4086-A3E5-1F9E94484106}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C3D86707-9F85-4086-A3E5-1F9E94484106}.Debug|x64.Build.0 = Debug|Any CPU
+		{C3D86707-9F85-4086-A3E5-1F9E94484106}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C3D86707-9F85-4086-A3E5-1F9E94484106}.Debug|x86.Build.0 = Debug|Any CPU
+		{C3D86707-9F85-4086-A3E5-1F9E94484106}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3D86707-9F85-4086-A3E5-1F9E94484106}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3D86707-9F85-4086-A3E5-1F9E94484106}.Release|x64.ActiveCfg = Release|Any CPU
+		{C3D86707-9F85-4086-A3E5-1F9E94484106}.Release|x64.Build.0 = Release|Any CPU
+		{C3D86707-9F85-4086-A3E5-1F9E94484106}.Release|x86.ActiveCfg = Release|Any CPU
+		{C3D86707-9F85-4086-A3E5-1F9E94484106}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

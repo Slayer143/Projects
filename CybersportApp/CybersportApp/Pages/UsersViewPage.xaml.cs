@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using CybersportApp.Core.ModelsForList;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace CybersportApp.Pages
 {
@@ -12,6 +14,11 @@ namespace CybersportApp.Pages
             InitializeComponent();
 
             DataContext = new UsersViewPageVM();
+        }
+
+        private void ShowUser(object sender, RoutedEventArgs e)
+        {
+            CybersportAppNavigation.Service.Navigate(new ProfileMenu((view.SelectedItem as UsersForList).Login));
         }
     }
 }

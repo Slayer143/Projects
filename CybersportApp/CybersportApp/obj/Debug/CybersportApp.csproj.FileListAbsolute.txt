@@ -105,3 +105,11 @@ C:\Projects\Projects\CybersportApp\CybersportApp\obj\Debug\Pages\DetailsPage.bam
 C:\Projects\Projects\CybersportApp\CybersportApp\obj\Debug\Pages\TeamsViewPage.baml
 C:\Projects\Projects\CybersportApp\CybersportApp\obj\Debug\Pages\TournamentsViewPage.baml
 C:\Projects\Projects\CybersportApp\CybersportApp\obj\Debug\Pages\UsersViewPage.baml
+C:\Projects\Projects\CybersportApp\CybersportApp\obj\Debug\Pages\TeamAddingPage.g.cs
+C:\Projects\Projects\CybersportApp\CybersportApp\obj\Debug\Pages\TeamAddingPage.baml
+C:\Projects\Projects\CybersportApp\CybersportApp\obj\Debug\Pages\TournamentAddingPage.g.cs
+C:\Projects\Projects\CybersportApp\CybersportApp\obj\Debug\Pages\TournamentAddingPage.baml
+C:\Projects\Projects\CybersportApp\CybersportApp\obj\Debug\Pages\MessagesPage.g.cs
+C:\Projects\Projects\CybersportApp\CybersportApp\obj\Debug\Pages\MessagesPage.baml
+C:\Projects\Projects\CybersportApp\CybersportApp\obj\Debug\DialogueStartWindow.g.cs
+C:\Projects\Projects\CybersportApp\CybersportApp\obj\Debug\DialogueStartWindow.baml

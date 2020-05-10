@@ -1,9 +1,4 @@
 ﻿using CybersportApp.Core.CybersportEntities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
@@ -11,6 +6,8 @@ namespace CybersportApp
 {
     public static class CybersportAppNavigation
     {
+        public static StackPanel MessageStack { get; set; }
+
         public static Page CurrentGreetingPage { get; set; }
 
         public static Page CurrentAuthorizationPage { get; set; }
@@ -27,7 +24,11 @@ namespace CybersportApp
 
         public static Page CurrentDetailsPage { get; set; }
 
+        public static Page CurrentMessagesPage { get; set; }
+
         public static MainWindow CurrentWindow {get;set;}
+
+        public static DialogueStartWindow CurrentDialogueWindow { get; set; }
 
         public static Users CurrentUser { get; set; }
 

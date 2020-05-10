@@ -9,7 +9,7 @@
       Title="TeamsViewPage">
 
     <Grid>
-        <Button Margin="10,10,10,10.4" Content="Add team" Visibility="{Binding AddVisibilityControl}" IsEnabled="{Binding AddIsEnableControl}" FontSize="30" Background="Black" Foreground="Orchid" BorderBrush="DarkOrchid" BorderThickness="2" Grid.Row="0"/>
+        <Button Margin="10,10,10,10.4" Content="Add team" Visibility="{Binding AddVisibilityControl}" IsEnabled="{Binding AddIsEnableControl}" Command="{Binding AddTeam}" FontSize="30" Background="Black" Foreground="Orchid" BorderBrush="DarkOrchid" BorderThickness="2" Grid.Row="0"/>
 
         <ListView Margin="10,9,10,10" Grid.Row="1" ItemsSource="{Binding TeamsList}" FontSize="20">
             <ListView.View>

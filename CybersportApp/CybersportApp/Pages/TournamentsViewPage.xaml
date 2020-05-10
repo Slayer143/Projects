@@ -9,7 +9,7 @@
       Title="TournamentsViewPage">
 
     <Grid>
-        <Button Margin="10,10,10,10.4" Content="Add tournament" Visibility="{Binding AddVisibilityControl}" IsEnabled="{Binding AddIsEnableControl}" FontSize="30" Background="Black" Foreground="Orchid" BorderBrush="DarkOrchid" BorderThickness="2" Grid.Row="0"/>
+        <Button Margin="10,10,10,10.4" Content="Add tournament" Visibility="{Binding AddVisibilityControl}" IsEnabled="{Binding AddIsEnableControl}" Command="{Binding AddTournament}" FontSize="30" Background="Black" Foreground="Orchid" BorderBrush="DarkOrchid" BorderThickness="2" Grid.Row="0"/>
 
         <ListView Margin="10,9.6,10,9" ItemsSource="{Binding TournamentsList}" FontSize="20" Grid.Row="1">
             <ListView.View>

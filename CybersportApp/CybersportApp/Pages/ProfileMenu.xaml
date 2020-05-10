@@ -9,6 +9,31 @@
       Title="ProfileMenu">
 
     <Grid>
+        <Button Content="Back" Background="Transparent" FontSize="40" Foreground="MediumOrchid" BorderThickness="2" BorderBrush="Orchid" Margin="10" Visibility="{Binding AnotherUserVisibilityControl}" IsEnabled="{Binding AnotherUserIsEnabledControl}" Command="{Binding Back}"/>
+        <Button Content="Show details" Background="Transparent" FontSize="40" Foreground="MediumOrchid" BorderThickness="2" BorderBrush="Orchid" Margin="10" Grid.Column="2" Visibility="{Binding AnotherUserVisibilityControl}" IsEnabled="{Binding AnotherUserIsEnabledControl}" Command="{Binding ShowDetails}"/>
+
+        <TextBlock Text="Login" Foreground="Orchid" FontSize="40" TextAlignment="Center" Grid.Row="1" Margin="10,0"/>
+        <TextBlock Text="{Binding Login}" Foreground="Orchid" FontSize="40" Grid.Column="1" Grid.Row="1"/>
+        <TextBlock Text="Full name" Foreground="Orchid" FontSize="40" TextAlignment="Center" Margin="10,0" Grid.Row="2"/>
+        <TextBlock Text="{Binding FullName}" TextWrapping="Wrap" Foreground="Orchid" FontSize="40" Grid.Row="2" Grid.Column="1"/>
+        <TextBlock Text="Birth date" Foreground="Orchid" FontSize="40" TextAlignment="Center" Margin="5,0,10,0" Grid.Row="3"/>
+        <TextBlock Text="{Binding BirthDate}" Foreground="Orchid" FontSize="40" Grid.Column="1" Grid.Row="3"/>
+        <TextBlock Text="Country" Foreground="Orchid" FontSize="40" TextAlignment="Center" Grid.Row="4" Margin="10,0"/>
+        <TextBlock Text="{Binding Country}" Foreground="Orchid" FontSize="40" Grid.Column="1" Grid.Row="4" Margin="0,0,395,0" Grid.ColumnSpan="2"/>
+        <TextBlock Text="Team" Foreground="Orchid" FontSize="40" TextAlignment="Center" Grid.Row="5" Margin="10,0"/>
+        <TextBlock Text="{Binding Team}" Foreground="Orchid" FontSize="40" Grid.Column="1" Grid.Row="5"/>
+        <ComboBox Text="{Binding Team}" ItemsSource="{Binding TeamsCollection}" Visibility="{Binding TeamChangeVisibilityControl}" IsEnabled="{Binding TeamChangeIsEnabledControl}" FontSize="40" Grid.Row="5" Grid.Column="1"/>
+        <TextBlock Text="Photo" Foreground="Orchid" FontSize="40" TextAlignment="Center" Grid.Row="1" Grid.Column="2" Margin="10"/>
+        <Image Source="{Binding Photo}" Grid.Column="2" Grid.Row="2" Margin="10" Grid.RowSpan="4"/>
+        <Button Content="Leave team" Background="Transparent" FontSize="40" Foreground="MediumOrchid" BorderBrush="Orchid" BorderThickness="2" Grid.Column="1" Grid.Row="6" Command="{Binding LeaveTeam}" Visibility="{Binding LeaveTeamVisibilityControl}" IsEnabled="{Binding LeaveTeamIsEnabledControl}" Margin="10"/>
+        <Button Content="Change photo" Background="Transparent" FontSize="40" Foreground="MediumOrchid" BorderBrush="Orchid" BorderThickness="2" Grid.Column="2" Grid.Row="6" Command="{Binding ChangePhoto}" Visibility="{Binding VisibilityControl}" IsEnabled="{Binding IsEnabledControl}" Margin="10"/>
+        <Button Content="WriteMessage" Background="Transparent" FontSize="40" Foreground="MediumOrchid" BorderThickness="2" BorderBrush="Orchid" Margin="10" Visibility="{Binding AnotherUserVisibilityControl}" IsEnabled="{Binding AnotherUserIsEnabledControl}" Command="{Binding WriteMessage}" Grid.Column="1"/>
+        <Button Content="Create team" Background="Transparent" FontSize="40" Foreground="MediumOrchid" BorderThickness="2" BorderBrush="Orchid" Margin="10" Visibility="{Binding ManagerCreateVisibilityControl}" IsEnabled="{Binding ManagerCreateIsEnabledControl}" Command="{Binding CreateTeam}" Grid.Row="6"/>
+        <Button Content="Change team" Background="Transparent" FontSize="40" Foreground="MediumOrchid" BorderThickness="2" BorderBrush="Orchid" Margin="10" Visibility="{Binding ManagerVisibilityControl}" IsEnabled="{Binding ManagerIsEnabledControl}" Command="{Binding ChangeTeam}" Grid.Row="6" Grid.Column="1"/>
+        <Button Content="Save" Background="Transparent" FontSize="40" Foreground="MediumOrchid" BorderThickness="2" BorderBrush="Orchid" Margin="10" Visibility="{Binding SaveVisibilityControl}" IsEnabled="{Binding SaveIsEnabledControl}" Command="{Binding Save}"/>
+        <Button Content="Save" Background="Transparent" FontSize="40" Foreground="MediumOrchid" BorderThickness="2" BorderBrush="Orchid" Margin="10" Visibility="{Binding SaveOtherVisibilityControl}" IsEnabled="{Binding SaveOtherIsEnabledControl}" Command="{Binding SaveOther}" Grid.Row="6"/>
+        <Button Content="Invite to the team" FontSize="40" Background="Transparent" BorderBrush="Orchid" BorderThickness="2" Foreground="MediumOrchid" Grid.Column="2" Grid.Row="6" Margin="10" Visibility="{Binding InviteVisibilityControl}" IsEnabled="{Binding InviteIsEnabledControl}" Command="{Binding Invite}"/>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -23,17 +48,5 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Login" Foreground="Orchid" FontSize="50" TextAlignment="Center" Grid.Row="1" Margin="10"/>
-        <TextBlock Text="{Binding Login}" Foreground="Orchid" FontSize="40" Grid.Column="1" Grid.Row="1" Margin="5,20,5,0"/>
-        <TextBlock Text="Full name" Foreground="Orchid" FontSize="50" TextAlignment="Center" Margin="10,10,10,5" Grid.Row="2"/>
-        <TextBlock Text="{Binding FullName}" Foreground="Orchid" FontSize="40" Grid.Row="2" Grid.Column="1" Margin="5,20,5,0"/>
-        <TextBlock Text="Birth date" Foreground="Orchid" FontSize="50" TextAlignment="Center" Margin="5,10,10,10" Grid.Row="3"/>
-        <TextBlock Text="{Binding BirthDate}" Foreground="Orchid" FontSize="40" Grid.Column="1" Grid.Row="3" Margin="5,20,5,0"/>
-        <TextBlock Text="Country" Foreground="Orchid" FontSize="50" TextAlignment="Center" Grid.Row="4" Margin="10,10,10,5"/>
-        <TextBlock Text="{Binding Country}" Foreground="Orchid" FontSize="40" Grid.Column="1" Grid.Row="4" Margin="5,20,10,0"/>
-        <TextBlock Text="Team" Foreground="Orchid" FontSize="50" TextAlignment="Center" Grid.Row="5" Margin="10"/>
-        <TextBlock Text="{Binding Team}" Foreground="Orchid" FontSize="40" Grid.Column="1" Grid.Row="5" Margin="5,20,5,0"/>
-        <TextBlock Text="Photo" Foreground="Orchid" FontSize="50" TextAlignment="Center" Grid.Row="1" Grid.Column="2" Margin="10"/>
-        <Image Source="{Binding Photo}" Grid.Column="2" Grid.Row="2" Margin="10" Grid.RowSpan="4"/>
     </Grid>
 </Page>

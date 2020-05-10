@@ -9,16 +9,26 @@
       Title="DetailsPage">
 
     <Grid>
+        <TextBlock TextAlignment="Center" Text="You entered wrong data" Visibility="{Binding ErrorMessageVisibilityControl}" TextWrapping="Wrap" Foreground="Red" FontSize="40" Grid.Column="1" Margin="5,0,0,0"/>
+        <TextBlock TextAlignment="Center" Text="Now you can add or change your information" Visibility="{Binding UpdateVisibilityControl}" TextWrapping="Wrap" Foreground="Orchid" FontSize="40" Grid.Column="2" Margin="0,0,10,0" Grid.RowSpan="2"/>
+
         <TextBlock TextAlignment="Center" Text="Raiting" Foreground="Orchid" FontSize="40" Margin="10,29.2,10,9.6" Grid.Row="1"/>
-        <ComboBox Text="{Binding Raiting}" ItemsSource="{Binding Raitings}" Grid.Column="1" Margin="10,29,10,10"  Grid.Row="1" Foreground="Orchid" FontSize="40"/>
+        <TextBlock Text="{Binding Rating}" Grid.Column="1" Margin="10,29,10,10"  Grid.Row="1" Foreground="Orchid" FontSize="40"/>
+        <ComboBox Grid.Column="1" Grid.Row="1" Margin="10,29,10,10" Text="{Binding Rating}" ItemsSource="{Binding Ratings}" Visibility="{Binding UpdateVisibilityControl}" IsEnabled="{Binding IsEnabledControl}"/>
+        <Button Content="Verify my account" FontSize="40" Background="Transparent" BorderBrush="Orchid" BorderThickness="2" Foreground="MediumOrchid" Grid.Column="2" Grid.Row="2" Margin="10" Visibility="{Binding VerifyVisibilityControl}" IsEnabled="{Binding VerifyIsEnabledControl}" Command="{Binding Verify}"/>
         <TextBlock TextAlignment="Center" Text="Account status" Foreground="Orchid" FontSize="40" Margin="10,29.4,10,10.4" Grid.Row="2"/>
-        <ComboBox Text="{Binding AccountStatus}" ItemsSource="{Binding AccountStatuses}" Grid.Column="1" Margin="10,29,10,10" Grid.Row="2" Foreground="Orchid" FontSize="40"/>
+        <TextBlock Text="{Binding AccountStatus}" Grid.Column="1" Margin="10,29,10,10" Grid.Row="2" Foreground="Orchid" FontSize="40"/>
         <TextBlock TextAlignment="Center" Text="Total earnings" Foreground="Orchid" FontSize="40" Margin="10,29.6,10,10.2" Grid.Row="3"/>
-        <TextBox Text="{Binding TotalEarnings}" Grid.Column="1" Margin="10,30,10,10" Grid.Row="3" Foreground="Orchid" FontSize="40" Background="Transparent"/>
+        <TextBox Text="{Binding TotalEarnings}" IsEnabled="{Binding IsEnabledControl}" Grid.Column="1" Margin="10,30,10,10" Grid.Row="3" Foreground="Orchid" FontSize="40" BorderThickness="2" BorderBrush="Orchid" Background="Transparent"/>
         <TextBlock TextAlignment="Center" Text="Year of career start" Foreground="Orchid" FontSize="40" Margin="10,29.8,10,10" Grid.Row="4"/>
-        <TextBox Text="{Binding CareerStart}" MaxLength="4" Grid.Column="1" Margin="10,30,10,10" Grid.Row="4" Foreground="Orchid" FontSize="40" Background="Transparent"/>
+        <TextBox Text="{Binding CareerStart}" IsEnabled="{Binding IsEnabledControl}" MaxLength="4" Grid.Column="1" Margin="10,30,10,10" Grid.Row="4" Foreground="Orchid" BorderThickness="2" BorderBrush="Orchid" FontSize="40" Background="Transparent"/>
         <TextBlock TextAlignment="Center" Text="Discipline" Foreground="Orchid" FontSize="40" Margin="10,30,10,9" Grid.Row="5"/>
-        <ComboBox Text="{Binding Discipline}" ItemsSource="{Binding Disciplines}" Grid.Column="1" Margin="10,30,10,10"  Grid.Row="5" Foreground="Orchid" FontSize="40"/>
+        <TextBlock Text="{Binding Discipline}" Grid.Column="1" Margin="10,30,10,10"  Grid.Row="5" Foreground="Orchid" FontSize="40"/>
+        <ComboBox Grid.Column="1" Grid.Row="5" Margin="10,29,10,10" Text="{Binding Discipline}" ItemsSource="{Binding Disciplines}" Visibility="{Binding UpdateVisibilityControl}" IsEnabled="{Binding IsEnabledControl}"/>
+        <Button Content="Save" FontSize="40" Background="Transparent" BorderBrush="Orchid" BorderThickness="2" Foreground="MediumOrchid" Grid.Column="2" Grid.Row="6" Margin="10" Visibility="{Binding UpdateVisibilityControl}" IsEnabled="{Binding IsEnabledControl}" Command="{Binding Save}"/>
+        <Button Content="Edit information" FontSize="40" Background="Transparent" BorderBrush="Orchid" BorderThickness="2" Foreground="MediumOrchid" Grid.Row="6" Margin="10" Command="{Binding Edit}" Visibility="{Binding EditVisibilityControl}" IsEnabled="{Binding EditIsEnabledControl}"/>
+        <Button Content="Cancel" FontSize="40" Background="Transparent" BorderBrush="Orchid" BorderThickness="2" Foreground="MediumOrchid" Grid.Column="1" Grid.Row="6" Margin="10" Visibility="{Binding UpdateVisibilityControl}" IsEnabled="{Binding IsEnabledControl}" Command="{Binding Cancel}"/>
+        <Button Content="Back" Background="Transparent" FontSize="40" Foreground="MediumOrchid" BorderThickness="2" BorderBrush="Orchid" Margin="10" Visibility="{Binding AnotherUserVisibilityControl}" IsEnabled="{Binding AnotherUserIsEnabledControl}" Command="{Binding Back}"/>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

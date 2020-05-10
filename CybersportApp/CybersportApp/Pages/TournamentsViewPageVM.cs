@@ -1,12 +1,7 @@
 ﻿using CybersportApp.Core;
 using CybersportApp.Core.ModelsForList;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CybersportApp.Pages
 {
@@ -69,6 +64,20 @@ namespace CybersportApp.Pages
             {
                 _tournamentsList = value;
                 OnPropertyChanged("TournamentsList");
+            }
+        }
+
+        private RelayCommand _addTournament { get; set; }
+
+        public RelayCommand AddTournament
+        {
+            get
+            {
+                return _addTournament ??
+                    (_addTournament = new RelayCommand(x =>
+                    {
+                        CybersportAppNavigation.Service.Navigate(new TournamentAddingPage());
+                    }));
             }
         }
 

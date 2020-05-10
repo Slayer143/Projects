@@ -1,14 +1,8 @@
 ﻿using CybersportApp.Pages;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
 namespace CybersportApp
@@ -235,6 +229,26 @@ namespace CybersportApp
             }
         }
 
+        private RelayCommand _goToMessages { get; set; }
+
+        public RelayCommand GoToMessages
+        {
+            get
+            {
+                return _goToMessages ??
+                    (_goToMessages = new RelayCommand(x =>
+                    {
+                        if (CybersportAppNavigation.CurrentMessagesPage != null)
+                            CybersportAppNavigation.Service.Navigate(CybersportAppNavigation.CurrentMessagesPage);
+                        else
+                        {
+                            CybersportAppNavigation.CurrentMessagesPage = new MessagesPage();
+                            CybersportAppNavigation.Service.Navigate(CybersportAppNavigation.CurrentMessagesPage);
+                        }
+                    }));
+            }
+        }
+
         private RelayCommand _exitAgreement { get; set; }
 
         public RelayCommand ExitAgreement
@@ -278,18 +292,7 @@ namespace CybersportApp
                 return _exit ??
                     (_exit = new RelayCommand(x =>
                     {
-                        CybersportAppNavigation.CurrentUser = null;
-
-                        if (CybersportAppNavigation.CurrentGreetingPage != null)
-                            CybersportAppNavigation.Service.Navigate(CybersportAppNavigation.CurrentGreetingPage);
-                        else
-                        {
-                            CybersportAppNavigation.CurrentGreetingPage = new GreetingPage();
-
-                            CybersportAppNavigation.CurrentWindow.DataContext = new MainWindowVM();
-
-                            CybersportAppNavigation.Service.Navigate(CybersportAppNavigation.CurrentGreetingPage);
-                        }
+                        CybersportAppNavigation.CurrentWindow.Close();
                     }));
             }
         }
@@ -335,7 +338,7 @@ namespace CybersportApp
             FirstColumnWidth = "1*";
             ColumnRange = 1;
             ColumnPosition = 3;
-            RowPosition = 6;
+            RowPosition = 7;
 
             ExitIsEnableControl = false;
             ExitVisibilityControl = Visibility.Hidden;

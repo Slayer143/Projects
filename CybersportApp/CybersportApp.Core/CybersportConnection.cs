@@ -27,6 +27,8 @@ namespace CybersportApp.Core
 
         public DbSet<PlayersInformation> PlayersInformation { get; set; }
 
+        public DbSet<Messages> Messages { get; set; }
+
         public CybersportConnection()
             : this(@"Data Source=localhost\SQLEXPRESS;Initial Catalog=CybersportDb;Integrated Security=true;")
         {
