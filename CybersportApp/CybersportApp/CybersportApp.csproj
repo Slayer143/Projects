@@ -115,6 +115,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="DeleteProfileWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DialogueStartWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -128,6 +132,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="CybersportAppNavigation.cs" />
+    <Compile Include="DeleteProfileWindow.xaml.cs">
+      <DependentUpon>DeleteProfileWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteProfileWindowVM.cs" />
     <Compile Include="DialogueStartWindow.xaml.cs">
       <DependentUpon>DialogueStartWindow.xaml</DependentUpon>
     </Compile>
@@ -135,6 +143,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\AchievementAddingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AdminOptionsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AuthorizationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -182,6 +198,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainWindowVM.cs" />
+    <Compile Include="Pages\AchievementAddingPage.xaml.cs">
+      <DependentUpon>AchievementAddingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AchievementAddingPageVM.cs" />
+    <Compile Include="Pages\AdminOptionsPage.xaml.cs">
+      <DependentUpon>AdminOptionsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AdminOptionsPageVM.cs" />
     <Compile Include="Pages\AuthorizationPage.xaml.cs">
       <DependentUpon>AuthorizationPage.xaml</DependentUpon>
     </Compile>

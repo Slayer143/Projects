@@ -10,7 +10,7 @@
 
     <Grid>
         <Button Content="Back" Background="Transparent" FontSize="40" Foreground="MediumOrchid" BorderThickness="2" BorderBrush="Orchid" Margin="10" Visibility="{Binding AnotherUserVisibilityControl}" IsEnabled="{Binding AnotherUserIsEnabledControl}" Command="{Binding Back}"/>
-        <Button Content="Show details" Background="Transparent" FontSize="40" Foreground="MediumOrchid" BorderThickness="2" BorderBrush="Orchid" Margin="10" Grid.Column="2" Visibility="{Binding AnotherUserVisibilityControl}" IsEnabled="{Binding AnotherUserIsEnabledControl}" Command="{Binding ShowDetails}"/>
+        <Button Content="Show details" Background="Transparent" FontSize="40" Foreground="MediumOrchid" BorderThickness="2" BorderBrush="Orchid" Margin="10" Grid.Column="2" Visibility="{Binding AnotherUserDetailsVisibilityControl}" IsEnabled="{Binding AnotherUserDetailsIsEnabledControl}" Command="{Binding ShowDetails}"/>
 
         <TextBlock Text="Login" Foreground="Orchid" FontSize="40" TextAlignment="Center" Grid.Row="1" Margin="10,0"/>
         <TextBlock Text="{Binding Login}" Foreground="Orchid" FontSize="40" Grid.Column="1" Grid.Row="1"/>
@@ -33,6 +33,8 @@
         <Button Content="Save" Background="Transparent" FontSize="40" Foreground="MediumOrchid" BorderThickness="2" BorderBrush="Orchid" Margin="10" Visibility="{Binding SaveVisibilityControl}" IsEnabled="{Binding SaveIsEnabledControl}" Command="{Binding Save}"/>
         <Button Content="Save" Background="Transparent" FontSize="40" Foreground="MediumOrchid" BorderThickness="2" BorderBrush="Orchid" Margin="10" Visibility="{Binding SaveOtherVisibilityControl}" IsEnabled="{Binding SaveOtherIsEnabledControl}" Command="{Binding SaveOther}" Grid.Row="6"/>
         <Button Content="Invite to the team" FontSize="40" Background="Transparent" BorderBrush="Orchid" BorderThickness="2" Foreground="MediumOrchid" Grid.Column="2" Grid.Row="6" Margin="10" Visibility="{Binding InviteVisibilityControl}" IsEnabled="{Binding InviteIsEnabledControl}" Command="{Binding Invite}"/>
+        <Button Content="Admin options" Background="Transparent" FontSize="40" Foreground="MediumOrchid" BorderThickness="2" BorderBrush="Orchid" Margin="10" Grid.Column="2" Visibility="{Binding AdminVisibilityControl}" IsEnabled="{Binding AdminIsEnabledControl}" Command="{Binding AdminOptions}"/>
+        <Button Content="Delete my profile" Background="Transparent" FontSize="40" Foreground="MediumOrchid" BorderThickness="2" BorderBrush="Orchid" Margin="10,15,10,5" Visibility="{Binding DeleteVisibilityControl}" IsEnabled="{Binding DeleteIsEnabledControl}" Command="{Binding Delete}" Grid.Column="1"/>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

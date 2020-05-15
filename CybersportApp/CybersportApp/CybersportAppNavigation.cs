@@ -30,6 +30,8 @@ namespace CybersportApp
 
         public static DialogueStartWindow CurrentDialogueWindow { get; set; }
 
+        public static DeleteProfileWindow CurrentDeleteProfileWindow { get; set; }
+
         public static Users CurrentUser { get; set; }
 
         public static PlayersInformation CurrentUserInfo { get; set; }

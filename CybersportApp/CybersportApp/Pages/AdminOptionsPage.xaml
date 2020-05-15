@@ -1,0 +1,46 @@
+﻿<Page x:Class="CybersportApp.Pages.AdminOptionsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CybersportApp.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="1200"
+      Title="AdminOptionsPage">
+
+    <Grid>
+        <Button Content="Back" Background="Transparent" FontSize="40" Foreground="MediumOrchid" BorderThickness="2" BorderBrush="Orchid" Margin="10" Command="{Binding Back}"/>
+        <Button Content="Add discipline" Background="Transparent" FontSize="40" Foreground="MediumOrchid" BorderThickness="2" BorderBrush="Orchid" Margin="10,10.2,10,9.6" Command="{Binding SaveDiscipline}" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <Button Content="Add country" Background="Transparent" FontSize="40" Foreground="MediumOrchid" BorderThickness="2" BorderBrush="Orchid" Margin="10,10.2,10,9.6" Command="{Binding SaveCountry}" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"/>
+        <Button Content="Add rating" Background="Transparent" FontSize="40" Foreground="MediumOrchid" BorderThickness="2" BorderBrush="Orchid" Margin="10,10.2,10,9.6" Command="{Binding SaveRating}" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2"/>
+
+        <TextBlock Text="Discipline adding" Foreground="Orchid" FontSize="40" TextAlignment="Center" Margin="10,10.4" Grid.Row="2" Grid.ColumnSpan="2"/>
+        <TextBlock Text="Country adding" Foreground="Orchid" FontSize="40" TextAlignment="Center" Margin="10,10.4" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"/>
+        <TextBlock Text="Rating adding" Foreground="Orchid" FontSize="40" TextAlignment="Center" Margin="10,10.4" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2"/>
+        <TextBlock Text="Discipline name" Foreground="Orchid" FontSize="40" TextAlignment="Center" Margin="10,38.6,10,10.2" Grid.Row="3" Grid.ColumnSpan="2"/>
+        <TextBlock Text="Country name" Foreground="Orchid" FontSize="40" TextAlignment="Center" Margin="10,38.6,10,10.2" Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="2"/>
+        <TextBlock Text="Rating value" Foreground="Orchid" FontSize="40" TextAlignment="Center" Margin="10,38.6,10,10.2" Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="4"/>
+
+        <TextBox Text="{Binding DisciplineName}" BorderBrush="Orchid" BorderThickness="2" TextWrapping="Wrap" Background="Transparent" Foreground="Orchid" FontSize="35" Grid.Row="4" Margin="10,9.8,10,10" Grid.ColumnSpan="2"/>
+        <TextBox Text="{Binding CountryName}" BorderBrush="Orchid" BorderThickness="2" TextWrapping="Wrap" Background="Transparent" Foreground="Orchid" FontSize="35" Grid.Row="4" Margin="10,9.8,10,10" Grid.ColumnSpan="2" Grid.Column="2"/>
+        <TextBox Text="{Binding RatingValue}" BorderBrush="Orchid" BorderThickness="2" TextWrapping="Wrap" Background="Transparent" Foreground="Orchid" FontSize="35" Grid.Row="4" Margin="10,9.8,10,10" Grid.ColumnSpan="2" Grid.Column="4"/>
+        <TextBlock Text="{Binding Message}" Foreground="Red" FontSize="40" TextAlignment="Center" Margin="10,10,10,10.8" Grid.Column="1" Grid.ColumnSpan="5"/>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+    </Grid>
+</Page>

@@ -11,6 +11,54 @@ namespace CybersportApp.Pages
 {
     public class ProfileMenuVM : INotifyPropertyChanged
     {
+        private Visibility _deleteVisibilityControl { get; set; }
+
+        public Visibility DeleteVisibilityControl
+        {
+            get { return _deleteVisibilityControl; }
+            set
+            {
+                _deleteVisibilityControl = value;
+                OnPropertyChanged("DeleteVisibilityControl");
+            }
+        }
+
+        private bool _deleteIsEnabledControl { get; set; }
+
+        public bool DeleteIsEnabledControl
+        {
+            get { return _deleteIsEnabledControl; }
+            set
+            {
+                _deleteIsEnabledControl = value;
+                OnPropertyChanged("DeleteIsEnabledControl");
+            }
+        }
+
+        private Visibility _adminVisibilityControl { get; set; }
+
+        public Visibility AdminVisibilityControl
+        {
+            get { return _adminVisibilityControl; }
+            set
+            {
+                _adminVisibilityControl = value;
+                OnPropertyChanged("AdminVisibilityControl");
+            }
+        }
+
+        private bool _adminIsEnabledControl { get; set; }
+
+        public bool AdminIsEnabledControl
+        {
+            get { return _adminIsEnabledControl; }
+            set
+            {
+                _adminIsEnabledControl = value;
+                OnPropertyChanged("AdminIsEnabledControl");
+            }
+        }
+
         private Visibility _leaveTeamVisibilityControl { get; set; }
 
         public Visibility LeaveTeamVisibilityControl
@@ -224,6 +272,30 @@ namespace CybersportApp.Pages
             {
                 _anotherUserIsEnabledControl = value;
                 OnPropertyChanged("AnotherUserIsEnabledControl");
+            }
+        }
+
+        private Visibility _anotherUserDetailsVisibilityControl { get; set; }
+
+        public Visibility AnotherUserDetailsVisibilityControl
+        {
+            get { return _anotherUserDetailsVisibilityControl; }
+            set
+            {
+                _anotherUserDetailsVisibilityControl = value;
+                OnPropertyChanged("AnotherUserDetailsVisibilityControl");
+            }
+        }
+
+        private bool _anotherUserDetailsIsEnabledControl { get; set; }
+
+        public bool AnotherUserDetailsIsEnabledControl
+        {
+            get { return _anotherUserDetailsIsEnabledControl; }
+            set
+            {
+                _anotherUserDetailsIsEnabledControl = value;
+                OnPropertyChanged("AnotherUserDetailsIsEnabledControl");
             }
         }
 
@@ -443,6 +515,20 @@ namespace CybersportApp.Pages
             }
         }
 
+        private RelayCommand _adminOptions { get; set; }
+
+        public RelayCommand AdminOptions
+        {
+            get
+            {
+                return _adminOptions ??
+                    (_adminOptions = new RelayCommand(x =>
+                    {
+                        CybersportAppNavigation.Service.Navigate(new AdminOptionsPage());
+                    }));
+            }
+        }
+
         private RelayCommand _save { get; set; }
 
         public RelayCommand Save
@@ -475,8 +561,28 @@ namespace CybersportApp.Pages
 
                         SaveOtherIsEnabledControl = false;
                         SaveOtherVisibilityControl = Visibility.Hidden;
+                        SaveIsEnabledControl = false;
+                        SaveVisibilityControl = Visibility.Hidden;
                         TeamChangeIsEnabledControl = false;
                         TeamChangeVisibilityControl = Visibility.Hidden;
+
+                        ManagerCreateIsEnabledControl = true;
+                        ManagerCreateVisibilityControl = Visibility.Visible;
+                    }));
+            }
+        }
+
+        private RelayCommand _delete { get; set; }
+
+        public RelayCommand Delete
+        {
+            get
+            {
+                return _delete ??
+                    (_delete = new RelayCommand(x =>
+                    {
+                        CybersportAppNavigation.CurrentDeleteProfileWindow = new DeleteProfileWindow();
+                        CybersportAppNavigation.CurrentDeleteProfileWindow.Show();
                     }));
             }
         }
@@ -501,6 +607,9 @@ namespace CybersportApp.Pages
                             SaveVisibilityControl = Visibility.Visible;
                         }
 
+                        ManagerCreateIsEnabledControl = false;
+                        ManagerCreateVisibilityControl = Visibility.Hidden;
+
                         TeamChangeIsEnabledControl = true;
                         TeamChangeVisibilityControl = Visibility.Visible;
 
@@ -521,6 +630,10 @@ namespace CybersportApp.Pages
             Team = CybersportCore.GetTeam(CybersportAppNavigation.CurrentUser.TeamId);
             Photo = CybersportAppNavigation.CurrentUser.Photo;
 
+            DeleteIsEnabledControl = true;
+            DeleteVisibilityControl = Visibility.Visible;
+            AnotherUserDetailsIsEnabledControl = false;
+            AnotherUserDetailsVisibilityControl = Visibility.Hidden;
             VisibilityControl = Visibility.Visible;
             IsEnabledControl = true;
             AnotherUserIsEnabledControl = false;
@@ -537,6 +650,14 @@ namespace CybersportApp.Pages
             InviteVisibilityControl = Visibility.Hidden;
             ManagerCreateIsEnabledControl = false;
             ManagerCreateVisibilityControl = Visibility.Hidden;
+            AdminIsEnabledControl = false;
+            AdminVisibilityControl = Visibility.Hidden;
+
+            if (CybersportAppNavigation.CurrentUser.RoleId == 1)
+            {
+                AdminIsEnabledControl = true;
+                AdminVisibilityControl = Visibility.Visible;
+            }
             
             if(Team == "No Team")
             {
@@ -574,6 +695,8 @@ namespace CybersportApp.Pages
             Team = CybersportCore.GetTeam(user.TeamId);
             Photo = user.Photo;
 
+            DeleteIsEnabledControl = false;
+            DeleteVisibilityControl = Visibility.Hidden;
             VisibilityControl = Visibility.Hidden;
             IsEnabledControl = false;
             AnotherUserIsEnabledControl = true;
@@ -590,6 +713,19 @@ namespace CybersportApp.Pages
             ManagerCreateVisibilityControl = Visibility.Hidden;
             LeaveTeamIsEnabledControl = false;
             LeaveTeamVisibilityControl = Visibility.Hidden;
+            AdminIsEnabledControl = false;
+            AdminVisibilityControl = Visibility.Hidden;
+
+            if (user.RoleId != 2)
+            {
+                AnotherUserDetailsIsEnabledControl = false;
+                AnotherUserDetailsVisibilityControl = Visibility.Hidden;
+            }
+            else
+            {
+                AnotherUserDetailsIsEnabledControl = true;
+                AnotherUserDetailsVisibilityControl = Visibility.Visible;
+            }
 
             if (CybersportAppNavigation.CurrentUser.RoleId == 3)
             {

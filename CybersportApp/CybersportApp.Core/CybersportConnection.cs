@@ -29,6 +29,8 @@ namespace CybersportApp.Core
 
         public DbSet<Messages> Messages { get; set; }
 
+        public DbSet<TournamentsWins> TournamentsWins { get; set; }
+
         public CybersportConnection()
             : this(@"Data Source=localhost\SQLEXPRESS;Initial Catalog=CybersportDb;Integrated Security=true;")
         {
@@ -37,6 +39,11 @@ namespace CybersportApp.Core
         public CybersportConnection(string connectionString)
         {
             _connectionString = connectionString;
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<TournamentsWins>().HasKey(x => new { x.UserId, x.TournamentId });
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

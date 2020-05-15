@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Projects\Projects\CybersportApp\CybersportApp\App.xaml
-13-322404574
+16-870678362
 
-33-1893106644
+392067840241
 20-1358533628
-DialogueStartWindow.xaml;MainWindow.xaml;Pages\AuthorizationPage.xaml;Pages\DetailsPage.xaml;Pages\GreetingPage.xaml;Pages\MessagesPage.xaml;Pages\ProfileMenu.xaml;Pages\RegistrationPage.xaml;Pages\TeamAddingPage.xaml;Pages\TeamsViewPage.xaml;Pages\TournamentAddingPage.xaml;Pages\TournamentsViewPage.xaml;Pages\UsersViewPage.xaml;
+DeleteProfileWindow.xaml;DialogueStartWindow.xaml;MainWindow.xaml;Pages\AchievementAddingPage.xaml;Pages\AdminOptionsPage.xaml;Pages\AuthorizationPage.xaml;Pages\DetailsPage.xaml;Pages\GreetingPage.xaml;Pages\MessagesPage.xaml;Pages\ProfileMenu.xaml;Pages\RegistrationPage.xaml;Pages\TeamAddingPage.xaml;Pages\TeamsViewPage.xaml;Pages\TournamentAddingPage.xaml;Pages\TournamentsViewPage.xaml;Pages\UsersViewPage.xaml;
 
-False
+True
 

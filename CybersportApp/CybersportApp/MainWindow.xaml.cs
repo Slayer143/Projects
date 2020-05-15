@@ -13,11 +13,11 @@ namespace CybersportApp
         {
             InitializeComponent();
 
-            CybersportAppNavigation.CurrentGreetingPage = new GreetingPage();
-            baseFrame.Content = CybersportAppNavigation.CurrentGreetingPage;
+            //CybersportAppNavigation.CurrentGreetingPage = new GreetingPage();
+            //baseFrame.Content = CybersportAppNavigation.CurrentGreetingPage;
             //baseFrame.Content = new RegistrationPage();
 
-            //baseFrame.Content = new AuthorizationPage();
+            baseFrame.Content = new AuthorizationPage();
 
             DataContext = new MainWindowVM();
 

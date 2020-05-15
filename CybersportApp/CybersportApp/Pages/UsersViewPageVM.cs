@@ -7,6 +7,18 @@ namespace CybersportApp.Pages
 {
     public class UsersViewPageVM : INotifyPropertyChanged
     {
+        private string _finder { get; set; }
+
+        public string Finder
+        {
+            get { return _finder; }
+            set
+            {
+                _finder = value;
+                OnPropertyChanged("Finder");
+            }
+        }
+
         private ObservableCollection<UsersForList> _usersList { get; set; }
 
         public ObservableCollection<UsersForList> UsersList
@@ -15,7 +27,33 @@ namespace CybersportApp.Pages
             set
             {
                 _usersList = value;
-                OnPropertyChanged("TeamsList");
+                OnPropertyChanged("UsersList");
+            }
+        }
+
+        private RelayCommand _useFinder { get; set; }
+
+        public RelayCommand UseFinder
+        {
+            get
+            {
+                return _useFinder ??
+                    (_useFinder = new RelayCommand(x =>
+                    {
+                        if (Finder == null
+                          || Finder == string.Empty)
+                            UsersList = CybersportCore.GetUsers(CybersportAppNavigation.CurrentUser.Login);
+                        else
+                        {
+                            UsersList.Clear();
+
+                            foreach (var user in CybersportCore.GetUsers(CybersportAppNavigation.CurrentUser.Login))
+                            {
+                                if (user.Login.Contains(Finder))
+                                    UsersList.Add(user);
+                            }
+                        }
+                    }));
             }
         }
 

@@ -9,7 +9,5 @@ namespace CybersportApp.Core.CybersportEntities
         
         [Required]
         public string Name { get; set; }
-
-        public byte[] Flag { get; set; }
     }
 }

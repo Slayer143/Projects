@@ -9,9 +9,13 @@
       Title="TeamsViewPage">
 
     <Grid>
-        <Button Margin="10,10,10,10.4" Content="Add team" Visibility="{Binding AddVisibilityControl}" IsEnabled="{Binding AddIsEnableControl}" Command="{Binding AddTeam}" FontSize="30" Background="Black" Foreground="Orchid" BorderBrush="DarkOrchid" BorderThickness="2" Grid.Row="0"/>
+        <Button Margin="10,10,10,10.6" Content="Add team" Visibility="{Binding AddVisibilityControl}" IsEnabled="{Binding AddIsEnableControl}" Command="{Binding AddTeam}" FontSize="30" Background="Black" Foreground="Orchid" BorderBrush="DarkOrchid" BorderThickness="2" Grid.Row="0" Grid.ColumnSpan="3"/>
 
-        <ListView Margin="10,9,10,10" Grid.Row="1" ItemsSource="{Binding TeamsList}" FontSize="20">
+        <TextBlock Margin="10,12.4,10,10.2" Grid.Row="1" FontSize="40" Foreground="Orchid" Background="Transparent" Text="Find by name:" TextAlignment="Center"/>
+        <TextBox Grid.Column="1" Margin="10,9.4,10,10.2" Grid.Row="1" FontSize="40" Foreground="Orchid" Background="Transparent" Text="{Binding Finder}" TextWrapping="Wrap" BorderBrush="DarkOrchid" BorderThickness="2"/>
+        <Button Grid.Column="2" Margin="10,9.4,10,10.2" Grid.Row="1" Background="Transparent" FontSize="40" Foreground="MediumOrchid" BorderBrush="DarkOrchid" BorderThickness="2" Command="{Binding UseFinder}" Content="Find"/>
+        
+        <ListView Margin="10,7.8,10,10" Grid.Row="2" ItemsSource="{Binding TeamsList}" FontSize="20" Grid.ColumnSpan="3">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=Name}" Width="300">Name</GridViewColumn>
@@ -22,8 +26,15 @@
             </ListView.View>
         </ListView>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="{Binding AddRowHeight}"/>
+            <RowDefinition Height="0.3*"/>
             <RowDefinition Height="{Binding LastRowHeight}"/>
         </Grid.RowDefinitions>
     </Grid>

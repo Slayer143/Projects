@@ -7,6 +7,18 @@ namespace CybersportApp.Pages
 {
     public class TeamsViewVM : INotifyPropertyChanged
     {
+        private string _finder { get; set; }
+
+        public string Finder
+        {
+            get { return _finder; }
+            set
+            {
+                _finder = value;
+                OnPropertyChanged("Finder");
+            }
+        }
+
         private string _addRowHeight { get; set; }
 
         public string AddRowHeight
@@ -81,6 +93,32 @@ namespace CybersportApp.Pages
             }
         }
 
+        private RelayCommand _useFinder { get; set; }
+
+        public RelayCommand UseFinder
+        {
+            get
+            {
+                return _useFinder ??
+                    (_useFinder = new RelayCommand(x =>
+                    {
+                        if (Finder == null
+                          || Finder == string.Empty)
+                            TeamsList = CybersportCore.GetTeams();
+                        else
+                        {
+                            TeamsList.Clear();
+
+                            foreach (var team in CybersportCore.GetTeams())
+                            {
+                                if (team.Name.Contains(Finder))
+                                    TeamsList.Add(team);
+                            }
+                        }
+                    }));
+            }
+        }
+
         public TeamsViewVM()
         {
             TeamsList = CybersportCore.GetTeams();
@@ -88,14 +126,14 @@ namespace CybersportApp.Pages
             if (CybersportAppNavigation.CurrentUser.RoleId != 1)
             {
                 AddRowHeight = "0";
-                LastRowHeight = "1*";
+                LastRowHeight = "2*";
                 AddVisibilityControl = false;
                 AddIsEnableControl = false;
             }
             else
             {
-                AddRowHeight = "9*";
-                LastRowHeight = "91*";
+                AddRowHeight = "0.3*";
+                LastRowHeight = "1.4*";
                 AddVisibilityControl = true;
                 AddIsEnableControl = true;
             }

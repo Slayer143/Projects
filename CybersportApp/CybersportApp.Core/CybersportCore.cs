@@ -4,8 +4,13 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.Diagnostics.Contracts;
 using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Windows.Forms;
+using System.Xml.Schema;
 
 namespace CybersportApp.Core
 {
@@ -22,6 +27,8 @@ namespace CybersportApp.Core
         public static ObservableCollection<AccountStatuses> AccountStatusesCollection { get; set; }
 
         public static ObservableCollection<Disciplines> DisciplinesCollection { get; set; }
+
+        public static ObservableCollection<TournamentsWinsForList> TournamentsWins { get; set; }
 
         public static void AddUser(Users user, PlayersInformation userInformation)
         {
@@ -492,7 +499,7 @@ namespace CybersportApp.Core
             using (var context = new CybersportConnection())
             {
                 var list = context.Messages.Where(x => x.SenderId == id
-                || x.RecipientId == id).ToList(); 
+                || x.RecipientId == id).ToList();
 
                 foreach (var elem in list)
                 {
@@ -608,6 +615,181 @@ namespace CybersportApp.Core
                 };
 
                 context.Messages.Add(message);
+                context.SaveChanges();
+            }
+        }
+
+        public static bool DisciplineNameIsNotReserved(string discipline)
+        {
+            using (var context = new CybersportConnection())
+            {
+                return context.Disciplines.FirstOrDefault
+                    (x =>
+                    x.Name.Trim(' ').ToLower() == discipline.Trim(' ').ToLower()
+                    ) == null
+                    ? true
+                    : false;
+            }
+        }
+
+        public static bool CountryNameIsNotReserved(string country)
+        {
+            using (var context = new CybersportConnection())
+            {
+                return context.Countries.FirstOrDefault
+                    (x => x.Name.Trim(' ').ToLower() == country.Trim(' ').ToLower()
+                    ) == null
+                    ? true
+                    : false;
+            }
+        }
+
+        public static bool RatingValueIsNotReserved(string rating)
+        {
+            using (var context = new CybersportConnection())
+            {
+                return context.Ratings.FirstOrDefault
+                    (x => x.RatingValue.Trim(' ').ToLower() == rating.Trim(' ').ToLower()
+                    ) == null
+                    ? true
+                    : false;
+            }
+        }
+
+        public static void AddCountry(string country)
+        {
+            using (var context = new CybersportConnection())
+            {
+                var newCountry = new Countries
+                {
+                    CountryId = context.Countries.Count(),
+                    Name = country
+                };
+                char.ToUpper(newCountry.Name[0]);
+
+                if (newCountry.CountryId == 100)
+                    newCountry.CountryId++;
+
+                context.Countries.Add(newCountry);
+                context.SaveChanges();
+            }
+        }
+
+        public static void AddDiscipline(string discipline)
+        {
+            using (var context = new CybersportConnection())
+            {
+                var newDiscipline = new Disciplines
+                {
+                    DisciplineId = context.Disciplines.Count(),
+                    Name = discipline
+                };
+
+                context.Disciplines.Add(newDiscipline);
+                context.SaveChanges();
+            }
+        }
+
+        public static void AddRating(string rating)
+        {
+            using (var context = new CybersportConnection())
+            {
+                var newRating = new Ratings
+                {
+                    RatingId = context.Ratings.Count(),
+                    RatingValue = rating
+                };
+
+                context.Ratings.Add(newRating);
+                context.SaveChanges();
+            }
+        }
+
+        public static void GetTournamentsWins(string login)
+        {
+            TournamentsWins = new ObservableCollection<TournamentsWinsForList>();
+
+            using (var context = new CybersportConnection())
+            {
+                var id = context.Users.FirstOrDefault(x => x.Login == login).UserId;
+
+                var collection = from users in context.Users
+                                 join tournamentsWins in context.TournamentsWins on users.UserId equals tournamentsWins.UserId
+                                 join tournaments in context.Tournaments on tournamentsWins.TournamentId equals tournaments.TournamentId
+                                 where users.UserId == id
+                                 select new TournamentsWinsForList
+                                 {
+                                     TournamentName = tournaments.Name,
+                                     Place = tournamentsWins.Place
+                                 };
+
+                foreach (var win in collection)
+                {
+                    TournamentsWins.Add(win);
+                }
+            }
+        }
+
+        public static void AddTournamentWin(Guid id, string tournament, int place)
+        {
+            using (var context = new CybersportConnection())
+            {
+                var tourWin = new TournamentsWins
+                {
+                    UserId = id,
+                    TournamentId = context.Tournaments.FirstOrDefault(x => x.Name == tournament).TournamentId,
+                    Place = place
+                };
+
+                context.TournamentsWins.Add(tourWin);
+                context.SaveChanges();
+            }
+        }
+
+        public static ObservableCollection<string> GetTournamentsNames()
+        {
+            var collection = new ObservableCollection<string>();
+
+            using (var context = new CybersportConnection())
+            {
+                foreach (var tournament in context.Tournaments)
+                {
+                    collection.Add(tournament.Name);
+                }
+            }
+
+            return collection;
+        }
+
+        public static int GetParticipants(string tournament)
+        {
+            using (var context = new CybersportConnection())
+            {
+                return context.Tournaments.FirstOrDefault(x => x.Name == tournament).Participants;
+            }
+
+        }
+
+        public static void DeleteUser(Guid id)
+        {
+            using (var context = new CybersportConnection())
+            {
+                var info = context.PlayersInformation.FirstOrDefault(x => x.UserId == id);
+                var messages = context.Messages.Where(x => x.RecipientId == id || x.SenderId == id);
+                var wins = context.TournamentsWins.Where(x => x.UserId == id);
+                var user = context.Users.FirstOrDefault(x => x.UserId == id);
+
+                if (info != null)
+                    context.PlayersInformation.Remove(info);
+                
+                if (messages != null)
+                context.Messages.RemoveRange(messages);
+
+                if(wins != null)
+                context.TournamentsWins.RemoveRange(wins);
+
+                context.Users.Remove(user);
+
                 context.SaveChanges();
             }
         }

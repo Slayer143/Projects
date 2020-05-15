@@ -138,9 +138,11 @@
     <Compile Include="CybersportEntities\Teams.cs" />
     <Compile Include="CybersportEntities\Tournaments.cs" />
     <Compile Include="CybersportEntities\TournamentsTypes.cs" />
+    <Compile Include="CybersportEntities\TournamentsWins.cs" />
     <Compile Include="CybersportEntities\Users.cs" />
     <Compile Include="ModelsForList\TeamsForList.cs" />
     <Compile Include="ModelsForList\TournamentsForList.cs" />
+    <Compile Include="ModelsForList\TournamentsWinsForList.cs" />
     <Compile Include="ModelsForList\UsersForList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,4 +1,5 @@
 ﻿using CybersportApp.Core;
+using CybersportApp.Core.ModelsForList;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -10,6 +11,66 @@ namespace CybersportApp.Pages
 {
     public class DetailsPageVM : INotifyPropertyChanged
     {
+        private ObservableCollection<TournamentsWinsForList> _achievementsList { get; set; }
+
+        public ObservableCollection<TournamentsWinsForList> AchievementsList
+        {
+            get { return _achievementsList; }
+            set
+            {
+                _achievementsList = value;
+                OnPropertyChanged("AchievementsList");
+            }
+        }
+
+        private Visibility _addAchievementVisibilityControl { get; set; }
+
+        public Visibility AddAchievementVisibilityControl
+        {
+            get { return _addAchievementVisibilityControl; }
+            set
+            {
+                _addAchievementVisibilityControl = value;
+                OnPropertyChanged("AddAchievementVisibilityControl");
+            }
+        }
+
+        private bool _addAchievementIsEnabledControl { get; set; }
+
+        public bool AddAchievementIsEnabledControl
+        {
+            get { return _addAchievementIsEnabledControl; }
+            set
+            {
+                _addAchievementIsEnabledControl = value;
+                OnPropertyChanged("AddAchievementIsEnabledControl");
+            }
+        }
+
+        private Visibility _achievementsVisibilityControl { get; set; }
+
+        public Visibility AchievementsVisibilityControl
+        {
+            get { return _achievementsVisibilityControl; }
+            set
+            {
+                _achievementsVisibilityControl = value;
+                OnPropertyChanged("AchievementsVisibilityControl");
+            }
+        }
+
+        private bool _achievementsIsEnabledControl { get; set; }
+
+        public bool AchievementsIsEnabledControl
+        {
+            get { return _achievementsIsEnabledControl; }
+            set
+            {
+                _achievementsIsEnabledControl = value;
+                OnPropertyChanged("AchievementsIsEnabledControl");
+            }
+        }
+
         private Visibility _errorMessageVisibilityControl { get; set; }
 
         public Visibility ErrorMessageVisibilityControl
@@ -276,11 +337,15 @@ namespace CybersportApp.Pages
                         {
                             VerifyIsEnabledControl = false;
                             VerifyVisibilityControl = Visibility.Hidden;
+                            AddAchievementIsEnabledControl = true;
+                            AddAchievementVisibilityControl = Visibility.Visible;
                         }
                         else
                         {
                             VerifyIsEnabledControl = true;
                             VerifyVisibilityControl = Visibility.Visible;
+                            AddAchievementIsEnabledControl = false;
+                            AddAchievementVisibilityControl = Visibility.Hidden;
                         }
                     }));
             }
@@ -341,6 +406,20 @@ namespace CybersportApp.Pages
             }
         }
 
+        private RelayCommand _goToAddAchievement { get; set; }
+
+        public RelayCommand GoToAddAchievement
+        {
+            get
+            {
+                return _goToAddAchievement ??
+                    (_goToAddAchievement = new RelayCommand(x =>
+                    {
+                        CybersportAppNavigation.Service.Navigate(new AchievementAddingPage());
+                    }));
+            }
+        }
+
         public DetailsPageVM()
         {
             CybersportCore.GetDisciplinesNames();
@@ -348,6 +427,8 @@ namespace CybersportApp.Pages
             CybersportCore.GetRaitingsNames();
 
             CybersportCore.GetAccountStatusesNames();
+
+            CybersportCore.GetTournamentsWins(CybersportAppNavigation.CurrentUser.Login);
 
             Disciplines = new ObservableCollection<string>();
 
@@ -404,6 +485,23 @@ namespace CybersportApp.Pages
                 AccountStatus = "Not verified";
             }
 
+            if(AccountStatus == "Not verified"
+                || CybersportCore.TournamentsWins.Count == 0)
+            {
+                AchievementsIsEnabledControl = false;
+                AchievementsVisibilityControl = Visibility.Hidden;
+            }
+            else
+            {
+                AchievementsList = CybersportCore.TournamentsWins;
+
+                AchievementsIsEnabledControl = true;
+                AchievementsVisibilityControl = Visibility.Visible;
+            }
+
+
+            AddAchievementVisibilityControl = Visibility.Hidden;
+            AddAchievementIsEnabledControl = false;
             EditVisibilityControl = Visibility.Visible;
             EditIsEnabledControl = true;
             AnotherUserIsEnabledControl = false;
@@ -422,6 +520,8 @@ namespace CybersportApp.Pages
             CybersportCore.GetRaitingsNames();
 
             CybersportCore.GetAccountStatusesNames();
+
+            CybersportCore.GetTournamentsWins(login);
 
             Disciplines = new ObservableCollection<string>();
 
@@ -466,6 +566,8 @@ namespace CybersportApp.Pages
                 .DisciplineId).Name;
             }
 
+            AddAchievementIsEnabledControl = false;
+            AddAchievementVisibilityControl = Visibility.Hidden;
             UpdateVisibilityControl = Visibility.Hidden;
             IsEnabledControl = false;
             EditVisibilityControl = Visibility.Hidden;
@@ -474,6 +576,20 @@ namespace CybersportApp.Pages
 
             AnotherUserIsEnabledControl = true;
             AnotherUserVisibilityControl = Visibility.Visible;
+
+            if (AccountStatus == "Not verified"
+                || CybersportCore.TournamentsWins.Count == 0)
+            {
+                AchievementsIsEnabledControl = false;
+                AchievementsVisibilityControl = Visibility.Hidden;
+            }
+            else
+            {
+                AchievementsList = CybersportCore.TournamentsWins;
+
+                AchievementsIsEnabledControl = true;
+                AchievementsVisibilityControl = Visibility.Visible;
+            }
 
             if (CybersportAppNavigation.CurrentUser.RoleId == 1)
             {

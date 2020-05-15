@@ -9,6 +9,18 @@ namespace CybersportApp
 {
     public class MainWindowVM : INotifyPropertyChanged
     {
+        private Visibility _generalVisibilityControl { get; set; }
+
+        public Visibility GeneralVisibilityControl
+        {
+            get { return _generalVisibilityControl; }
+            set
+            {
+                _generalVisibilityControl = value;
+                OnPropertyChanged("GeneralVisibilityControl");
+            }
+        }
+
         private bool _generalIsEnabledControl { get; set; }
 
         public bool GeneralIsEnabledControl
@@ -292,7 +304,27 @@ namespace CybersportApp
                 return _exit ??
                     (_exit = new RelayCommand(x =>
                     {
-                        CybersportAppNavigation.CurrentWindow.Close();
+                        CybersportAppNavigation.Service.Navigate(CybersportAppNavigation.CurrentGreetingPage);
+                        CybersportAppNavigation.CurrentUser = null;
+                        CybersportAppNavigation.CurrentUserInfo = null;
+                        CybersportAppNavigation.CurrentUsersPage = null;
+                        CybersportAppNavigation.CurrentTournamentsPage = null;
+                        CybersportAppNavigation.CurrentTeamsPage = null;
+                        CybersportAppNavigation.CurrentRegistrationPage = null;
+                        CybersportAppNavigation.CurrentProfileMenuPage = null;
+                        CybersportAppNavigation.CurrentMessagesPage = null;
+                        CybersportAppNavigation.CurrentDialogueWindow = null;
+                        CybersportAppNavigation.CurrentDetailsPage = null;
+                        CybersportAppNavigation.CurrentAuthorizationPage = null;
+
+                        ExitIsEnableControl = false;
+                        ExitVisibilityControl = Visibility.Hidden;
+
+                        GeneralIsEnabledControl = true;
+
+                        GeneralVisibilityControl = Visibility.Hidden;
+
+                        FirstColumnWidth = "0*";
                     }));
             }
         }
@@ -311,6 +343,7 @@ namespace CybersportApp
             ExitVisibilityControl = Visibility.Hidden;
 
             GeneralIsEnabledControl = true;
+            GeneralVisibilityControl = Visibility.Visible;
         }
 
         public MainWindowVM(int userCode)
@@ -344,6 +377,7 @@ namespace CybersportApp
             ExitVisibilityControl = Visibility.Hidden;
 
             GeneralIsEnabledControl = true;
+            GeneralVisibilityControl = Visibility.Visible;
         }
 
         protected virtual void OnPropertyChanged(string propertyName)

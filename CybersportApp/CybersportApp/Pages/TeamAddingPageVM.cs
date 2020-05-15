@@ -100,7 +100,7 @@ namespace CybersportApp.Pages
                 return _cancel ??
                     (_cancel = new RelayCommand(x =>
                     {
-                        CybersportAppNavigation.Service.Navigate(CybersportAppNavigation.CurrentTeamsPage);
+                        CybersportAppNavigation.Service.GoBack();
                     }));
             }
         }
@@ -119,7 +119,7 @@ namespace CybersportApp.Pages
                             CybersportCore.AddTeam(TeamName, ShortName, Discipline, Country);
 
                             CybersportAppNavigation.CurrentTeamsPage = new TeamsViewPage();
-                            CybersportAppNavigation.Service.Navigate(CybersportAppNavigation.CurrentTeamsPage);
+                            CybersportAppNavigation.Service.GoBack();
 
                             ErrorMessageVisibilityControl = Visibility.Hidden;
                         }

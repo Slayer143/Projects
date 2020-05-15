@@ -82,6 +82,7 @@ namespace CybersportApp.Pages
             if (_imageCounter == 2)
             {
                 _actionBlock.BeginAnimation(OpacityProperty, _fromZero);
+                _contactBlock.BeginAnimation(OpacityProperty, _fromZero);
                 _registerButton.BeginAnimation(OpacityProperty, _fromZero);
                 _authorizeButton.BeginAnimation(OpacityProperty, _fromZero);
             }

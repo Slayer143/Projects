@@ -9,7 +9,11 @@
       Title="UsersViewPage">
 
     <Grid>
-        <ListView x:Name="view" Margin="10,9,10,10" Grid.Row="0" ItemsSource="{Binding UsersList}" FontSize="20" MouseDoubleClick="ShowUser">
+        <TextBlock Margin="10,13,10,9.6" FontSize="40" Foreground="Orchid" Background="Transparent" Text="Find by login:" TextAlignment="Center"/>
+        <TextBox Grid.Column="1" Margin="10,13,10,6.6" FontSize="40" Foreground="Orchid" Background="Transparent" Text="{Binding Finder}" TextWrapping="Wrap" BorderBrush="DarkOrchid" BorderThickness="2"/>
+        <Button Grid.Column="2" Margin="10,13,10,6.6" Background="Transparent" FontSize="40" Foreground="MediumOrchid" BorderBrush="DarkOrchid" BorderThickness="2" Command="{Binding UseFinder}" Content="Find"/>
+
+        <ListView x:Name="view" Margin="10,9.4,10,10" Grid.Row="1" ItemsSource="{Binding UsersList}" FontSize="20" MouseDoubleClick="ShowUser" Grid.RowSpan="2" Grid.ColumnSpan="3">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=Login}" Width="180">Login</GridViewColumn>
@@ -21,8 +25,16 @@
                 </GridView>
             </ListView.View>
         </ListView>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="1.7*"/>
         </Grid.RowDefinitions>
     </Grid>
 </Page>
