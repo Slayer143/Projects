@@ -1,0 +1,15 @@
+C:\Projects\Projects\ImagesPresentation\ImagesPresentation\bin\Debug\ImagesPresentation.exe.config
+C:\Projects\Projects\ImagesPresentation\ImagesPresentation\bin\Debug\ImagesPresentation.exe
+C:\Projects\Projects\ImagesPresentation\ImagesPresentation\bin\Debug\ImagesPresentation.pdb
+C:\Projects\Projects\ImagesPresentation\ImagesPresentation\obj\Debug\ImagesPresentation.csprojAssemblyReference.cache
+C:\Projects\Projects\ImagesPresentation\ImagesPresentation\obj\Debug\MainWindow.g.cs
+C:\Projects\Projects\ImagesPresentation\ImagesPresentation\obj\Debug\App.g.cs
+C:\Projects\Projects\ImagesPresentation\ImagesPresentation\obj\Debug\ImagesPresentation_MarkupCompile.cache
+C:\Projects\Projects\ImagesPresentation\ImagesPresentation\obj\Debug\ImagesPresentation_MarkupCompile.lref
+C:\Projects\Projects\ImagesPresentation\ImagesPresentation\obj\Debug\MainWindow.baml
+C:\Projects\Projects\ImagesPresentation\ImagesPresentation\obj\Debug\ImagesPresentation.g.resources
+C:\Projects\Projects\ImagesPresentation\ImagesPresentation\obj\Debug\ImagesPresentation.Properties.Resources.resources
+C:\Projects\Projects\ImagesPresentation\ImagesPresentation\obj\Debug\ImagesPresentation.csproj.GenerateResource.cache
+C:\Projects\Projects\ImagesPresentation\ImagesPresentation\obj\Debug\ImagesPresentation.csproj.CoreCompileInputs.cache
+C:\Projects\Projects\ImagesPresentation\ImagesPresentation\obj\Debug\ImagesPresentation.exe
+C:\Projects\Projects\ImagesPresentation\ImagesPresentation\obj\Debug\ImagesPresentation.pdb
