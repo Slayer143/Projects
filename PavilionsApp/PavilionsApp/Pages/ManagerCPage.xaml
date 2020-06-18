@@ -1,0 +1,29 @@
+﻿<Page x:Class="PavilionsApp.Pages.ManagerCPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PavilionsApp.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="1200"
+      Title="ManagerCPage">
+
+    <Grid>
+        <Button Background="Black" Foreground="MediumOrchid" Content="Выход" FontSize="40" BorderBrush="Red" BorderThickness="3" Margin="10,10,10,10.2" Command="{Binding Exit}"/>
+        <Button Background="Black" Foreground="MediumOrchid" Content="Просмотр списка ТЦ" FontSize="40" BorderBrush="Red" BorderThickness="3" Margin="10" Command="{Binding ShoppingCenters}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"/>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+    </Grid>
+</Page>
