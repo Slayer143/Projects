@@ -18,11 +18,13 @@ namespace ThreadsPractice
             //myOddThread.Start();
             #endregion
 
-            Console.WriteLine("Hello, I`m main stream!");
+            #region Async
+            //Console.WriteLine("Hello, I`m main stream!");
 
-            CalculateEvenAsync();
+            //CalculateEvenAsync();
 
-            Console.WriteLine("I`m tired, bye!");
+            //Console.WriteLine("I`m tired, bye!");
+            #endregion
         }
 
         static async Task CalculateEvenAsync()
